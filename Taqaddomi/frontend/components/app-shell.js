@@ -10,7 +10,7 @@ if (sidebar && header) {
       <div class="sidebar-top">
         <a class="brand" href="../my-trackers/index.html" aria-label="Taqaddomi home">
           <span class="brand-icon icon">verified</span>
-          <span><strong>Taqaddomi</strong><small dir="rtl">تَقَدُّمي • Habit Hub</small></span>
+          <span><strong>Taqaddomi</strong></span>
         </a>
         <div class="sidebar-add-wrap">
           <button class="sidebar-add btn-tactile-green" type="button" data-open-entry>
