@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tracker Details | Taqaddomi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/theme.css">
+  <link rel="stylesheet" href="../../styles/components.css">
+  <link rel="stylesheet" href="../../styles/buttons.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app-sidebar" data-active-page="my-trackers"></div>
+  <div class="main-area">
+    <div id="app-header"></div>
+    <main class="details-page">
+      <div class="details-content">
+        <a class="back-link" href="../my-trackers/index.html"><span class="icon">arrow_back</span>Back to My Trackers</a>
+
+        <div id="tracker-details-view">
+        <section class="details-hero" aria-labelledby="tracker-title">
+          <div class="details-hero-cover" id="tracker-cover"><span class="icon" id="tracker-cover-icon">track_changes</span></div>
+          <div class="details-hero-content">
+            <div class="details-badges"><span class="details-category" id="tracker-category"></span><span class="details-status" id="tracker-status"></span></div>
+            <h1 id="tracker-title">Tracker details</h1>
+            <p id="tracker-subtitle"></p>
+          </div>
+        </section>
+
+        <section class="details-stats" aria-label="Tracker summary">
+          <article class="detail-stat"><span class="icon">edit_note</span><div><strong id="entry-total">0</strong><small>Entries logged</small></div></article>
+          <article class="detail-stat"><span class="icon">track_changes</span><div><strong id="format-summary">Daily</strong><small>Tracking format</small></div></article>
+          <article class="detail-stat"><span class="icon">public</span><div><strong id="privacy-summary">Private</strong><small>Visibility</small></div></article>
+        </section>
+
+        <section class="details-panel tracker-information">
+          <div class="panel-heading"><div><span class="panel-eyebrow">OVERVIEW</span><h2>Tracker information</h2></div><span class="icon panel-heading-icon">info</span></div>
+          <div class="information-grid">
+            <article class="information-item"><span>Category</span><strong id="info-category">—</strong></article>
+            <article class="information-item"><span>Status</span><strong id="info-status">—</strong></article>
+            <article class="information-item"><span>Start date</span><strong id="info-start-date">—</strong></article>
+            <article class="information-item"><span>Target date</span><strong id="info-target-date">—</strong></article>
+            <article class="information-item"><span>Created</span><strong id="info-created-date">—</strong></article>
+            <article class="information-item" id="counter-unit-item" hidden><span>Counter unit</span><strong id="info-counter-unit">—</strong></article>
+          </div>
+          <div class="intention-panel" id="intention-panel" hidden><h3>My intention</h3><p id="tracker-intention"></p></div>
+        </section>
+
+        <section class="details-panel entries-panel">
+          <div class="panel-heading"><div><span class="panel-eyebrow">YOUR PROGRESS</span><h2>Entry history</h2></div><span class="entry-count-badge" id="entry-count-badge">0 entries</span></div>
+          <div class="entry-history" id="entry-history"></div>
+        </section>
+        </div>
+
+        <section class="tracker-not-found" id="tracker-not-found" hidden>
+          <span class="icon">search_off</span><h1>Tracker not found</h1>
+          <p>This tracker may have been deleted or the link is no longer valid.</p>
+          <a class="btn-tactile-green" href="../my-trackers/index.html">Return to My Trackers</a>
+        </section>
+      </div>
+    </main>
+  </div>
+  <script src="../../components/app-shell.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

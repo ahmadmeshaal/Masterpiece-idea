@@ -1,0 +1,868 @@
+<!DOCTYPE html><html dir="ltr" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Taqaddomi (تَقَدُّمي) - Tactile Daily Habit Builder</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400..700,0..1,0&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#f2fce9',
+              100: '#e1f9cd',
+              200: '#c2f29b',
+              400: '#75db28',
+              500: '#58cc02',
+              600: '#46a302',
+              700: '#347a01',
+              800: '#265b02'
+            },
+            surface: {
+              canvas: '#fcf9f2',
+              card: '#ffffff',
+              subtle: '#f5f1e6',
+              border: '#ece6d9',
+              darkBorder: '#ded6c4'
+            },
+            streak: {
+              50: '#fff7ed',
+              100: '#ffedd5',
+              400: '#fb923c',
+              500: '#ff9600',
+              600: '#ea580c',
+              700: '#c2410c'
+            },
+            gem: {
+              50: '#f0f9ff',
+              100: '#e0f2fe',
+              500: '#1cb0f6',
+              600: '#0284c7'
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          },
+          animation: {
+            'float-slow': 'float 5s ease-in-out infinite',
+            'float-delayed': 'float 6s ease-in-out 2s infinite',
+            'float-fast': 'float 4s ease-in-out 1s infinite',
+            'pulse-soft': 'pulseSoft 3s ease-in-out infinite',
+            'flame-glow': 'flameGlow 2s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-8px)' },
+            },
+            pulseSoft: {
+              '0%, 100%': { opacity: '0.9', transform: 'scale(1)' },
+              '50%': { opacity: '1', transform: 'scale(1.03)' },
+            },
+            flameGlow: {
+              '0%': { filter: 'drop-shadow(0 0 4px rgba(255, 150, 0, 0.4))' },
+              '100%': { filter: 'drop-shadow(0 0 12px rgba(255, 100, 0, 0.8))' },
+            }
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+      background-color: #fcf9f2;
+      color: #24221c;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(#ebdcb9 0.75px, transparent 0.75px),
+        radial-gradient(#ebdcb9 0.75px, #fcf9f2 0.75px);
+      background-size: 32px 32px;
+      background-position: 0 0, 16px 16px;
+    }
+    
+    /* 3D Tactile Buttons */
+    .btn-tactile-green {
+      background-color: #58cc02;
+      color: #ffffff;
+      border: 2px solid #3fa002;
+      border-bottom: 5px solid #368202;
+      box-shadow: 0 4px 12px rgba(88, 204, 2, 0.25);
+      transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .btn-tactile-green:hover {
+      background-color: #61de02;
+      transform: translateY(-1px);
+      border-bottom-width: 6px;
+    }
+    .btn-tactile-green:active {
+      transform: translateY(4px);
+      border-bottom-width: 1px;
+      box-shadow: 0 1px 4px rgba(88, 204, 2, 0.15);
+    }
+
+    .btn-tactile-white {
+      background-color: #ffffff;
+      color: #2b2b24;
+      border: 2px solid #e5dfd0;
+      border-bottom: 5px solid #d5cdbd;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+      transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .btn-tactile-white:hover {
+      background-color: #faf7f0;
+      transform: translateY(-1px);
+      border-bottom-width: 6px;
+    }
+    .btn-tactile-white:active {
+      transform: translateY(4px);
+      border-bottom-width: 1px;
+    }
+
+    .btn-tactile-orange {
+      background-color: #ff9600;
+      color: #ffffff;
+      border: 2px solid #e07e00;
+      border-bottom: 5px solid #be6300;
+      box-shadow: 0 4px 12px rgba(255, 150, 0, 0.25);
+      transition: all 0.12s ease;
+    }
+    .btn-tactile-orange:hover {
+      background-color: #ffa41c;
+      transform: translateY(-1px);
+    }
+    .btn-tactile-orange:active {
+      transform: translateY(4px);
+      border-bottom-width: 1px;
+    }
+
+    /* Tactile Cards */
+    .tactile-card-xl {
+      background-color: #ffffff;
+      border: 2.5px solid #ece4d4;
+      border-bottom: 7px solid #dbd1be;
+      border-radius: 2rem;
+      box-shadow: 0 10px 25px -5px rgba(60, 50, 30, 0.05);
+    }
+
+    .tactile-card-lg {
+      background-color: #ffffff;
+      border: 2px solid #ebe5d6;
+      border-bottom: 6px solid #dcd3bf;
+      border-radius: 1.75rem;
+      box-shadow: 0 8px 20px -4px rgba(60, 50, 30, 0.04);
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s;
+    }
+    .tactile-card-lg:hover {
+      transform: translateY(-4px);
+      border-color: #dfd7c4;
+    }
+
+    .tactile-pill {
+      background-color: #ffffff;
+      border: 1.5px solid #e8e2d2;
+      border-bottom: 3.5px solid #dcd4c2;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.03);
+    }
+
+    /* Habit Check Toggle Button */
+    .habit-check-btn {
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 9999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .habit-check-btn.checked {
+      background-color: #58cc02;
+      border: 2px solid #46a302;
+      border-bottom: 4px solid #368202;
+      color: white;
+    }
+    .habit-check-btn.unchecked {
+      background-color: #f7f4ea;
+      border: 2px solid #ded6c2;
+      border-bottom: 3.5px solid #cfc5af;
+      color: #9c9584;
+    }
+    .habit-check-btn.unchecked:hover {
+      background-color: #eef8e5;
+      border-color: #a4e672;
+      color: #58cc02;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+<!-- TOP HEADER NAVIGATION BAR -->
+<header class="sticky top-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#ECE6D9]">
+<div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
+<!-- Brand Logo -->
+<a class="flex items-center gap-3 group shrink-0" href="#">
+<div class="w-10 h-10 rounded-2xl bg-brand-500 flex items-center justify-center text-white border-2 border-brand-600 border-b-4 border-b-brand-700 shadow-sm group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-2xl font-black">bolt</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="text-xl font-black text-[#22221b] tracking-tight">Taqaddomi</span>
+
+</div>
+
+</div>
+</a>
+<!-- Center Navigation Links -->
+<nav class="hidden md:flex items-center gap-1.5 text-sm font-bold text-[#525046]"><a class="px-4 py-1.5 rounded-full hover:text-[#22221b] hover:bg-[#ede7d8]/60 transition-all" href="#tracker-types">Features</a><a class="px-4 py-1.5 rounded-full hover:text-[#22221b] hover:bg-[#ede7d8]/60 transition-all" href="#community-feed">Community</a><a class="px-4 py-1.5 rounded-full hover:text-[#22221b] hover:bg-[#ede7d8]/60 transition-all" href="#pricing-faq">Pricing</a><a class="px-4 py-1.5 rounded-full hover:text-[#22221b] hover:bg-[#ede7d8]/60 transition-all" href="#faq">FAQ</a></nav>
+<!-- Right CTAs & Language Switcher -->
+<div class="flex items-center gap-3 shrink-0">
+<div class="hidden sm:flex items-center bg-[#ede7d8] rounded-full p-1 border border-[#dfd7c4]">
+<button class="px-3 py-1 rounded-full text-xs font-black bg-white text-[#2b2b24] shadow-sm border border-[#ded5c2]" type="button">EN</button>
+<button class="px-3 py-1 rounded-full text-xs font-black text-[#757264] hover:text-[#2b2b24] transition-colors" type="button">العربية</button>
+</div>
+<a class="hidden sm:inline-block text-xs font-bold text-[#525046] hover:text-[#22221b] px-3 py-2 transition-colors" href="#start-cta">
+        Sign In
+      </a>
+<a class="btn-tactile-green font-black px-5 py-2.5 rounded-xl text-xs sm:text-sm flex items-center gap-1.5 cursor-pointer shadow-sm" href="#how-it-works">
+<span class="">Start Free</span>
+<span class="material-symbols-outlined text-base font-black">arrow_forward</span>
+</a>
+</div>
+</div>
+</header>
+<!-- MAIN MARKETING CONTENT -->
+<main class="flex-1">
+<!-- HERO SECTION -->
+<section class="relative pt-12 pb-24 md:py-24 overflow-hidden">
+<!-- Playful fluid aura backgrounds -->
+<div class="absolute -top-24 -left-20 w-96 h-96 rounded-full bg-brand-200/40 blur-3xl pointer-events-none animate-pulse-soft"></div>
+<div class="absolute top-1/4 right-0 w-[30rem] h-[30rem] rounded-full bg-amber-200/40 blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-1/3 w-80 h-80 rounded-full bg-gem-100/50 blur-3xl pointer-events-none"></div>
+<div class="max-w-7xl mx-auto px-6 relative">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-14 items-center">
+<!-- Left: Catchy Copy & CTAs -->
+<div class="lg:col-span-6 flex flex-col items-start text-left z-10">
+<!-- Arabic + Creator Badge -->
+
+<h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-[#22221b] leading-tight mb-6 tracking-tight"><span class="block">Don’t just check it off.</span><span class="relative inline-block text-brand-600 mt-1">Show how you got there.<svg class="absolute -bottom-2.5 left-0 w-full overflow-visible" fill="none" height="12" viewBox="0 0 200 12" xmlns="http://www.w3.org/2000/svg"><path d="M2 9C40 2 80 12 110 5C140 -2 170 11 198 6" stroke="#75db28" stroke-linecap="round" stroke-width="5"></path></svg></span></h1>
+<p class="text-base sm:text-lg font-bold text-[#615e51] leading-relaxed max-w-xl mb-9">Track your goals with real notes, photos and streaks, and share your journey with people working toward the same thing.</p>
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 w-full sm:w-auto mb-10">
+<a class="btn-tactile-green text-center text-base font-black px-8 py-4 rounded-full flex items-center justify-center gap-2.5 shadow-lg" href="#playground">
+<span class="material-symbols-outlined text-2xl">rocket_launch</span>
+<span class="">Start Free Journey</span>
+</a>
+<a class="btn-tactile-white text-center text-base font-black px-6 py-3.5 rounded-full flex items-center justify-center gap-3 cursor-pointer group shadow-sm" href="#how-it-works"><span class="w-8 h-8 rounded-full bg-amber-100 border border-amber-300 text-streak-600 flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform"><span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 1;">play_arrow</span></span><span class="text-[#22221b]">Watch How It Works</span></a>
+</div>
+<!-- Social Proof Bar -->
+</div>
+<!-- Right: Interactive Tactile Mockup Widget with Floating Achievement Badges -->
+<div class="lg:col-span-6 relative mt-6 lg:mt-0">
+<!-- Floating Pill 1: Streak (Top Right) -->
+<div class="absolute -top-6 right-2 sm:right-6 z-20 tactile-pill px-4 py-2 rounded-2xl flex items-center gap-2 animate-float-slow hover:scale-105 transition-transform bg-white/95">
+<span class="text-xl animate-flame-glow">🔥</span>
+<div>
+<span class="text-[10px] font-black uppercase text-streak-600 block leading-tight">Momentum</span>
+<span class="text-xs font-black text-[#22221b]">48-Day Active Streak</span>
+</div>
+</div>
+<!-- Floating Pill 2: Shield Saved (Bottom Left) -->
+<div class="absolute -bottom-6 -left-4 sm:-left-6 z-20 tactile-pill px-4 py-2.5 rounded-2xl flex items-center gap-2.5 animate-float-delayed hover:scale-105 transition-transform bg-white/95">
+<div class="w-8 h-8 rounded-xl bg-brand-100 flex items-center justify-center text-brand-700 text-base">🛡️</div>
+<div>
+<span class="text-[10px] font-black uppercase text-brand-700 block leading-tight">Streak Shield</span>
+<span class="text-xs font-black text-[#22221b]">Rest Day Protected</span>
+</div>
+</div>
+<!-- Floating Pill 3: XP Burst (Top Left) -->
+<div class="absolute top-16 -left-6 z-20 tactile-pill px-3.5 py-1.5 rounded-2xl flex items-center gap-2 animate-float-fast hover:scale-105 transition-transform bg-white/95 hidden sm:flex">
+<span class="text-base text-yellow-500 font-black">✨</span>
+<span class="text-xs font-black text-amber-800">+50 XP Deep Focus</span>
+</div>
+<!-- Main Interactive Card -->
+<div class="tactile-card-xl p-6 sm:p-7 relative bg-white">
+<!-- Header Bar -->
+<div class="flex items-center justify-between pb-4 mb-4 border-b-2 border-[#f0ebd9]">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-brand-500 text-white flex items-center justify-center border-2 border-brand-600 border-b-4 border-b-brand-700">
+<span class="material-symbols-outlined text-xl font-bold">calendar_month</span>
+</div>
+<div>
+<div class="text-sm font-black text-[#22221b]">Today's Rituals</div>
+<div class="text-[11px] font-bold text-[#757264]">Thursday • 3 of 4 Completed</div>
+</div>
+</div>
+<!-- Interactive Tab Switcher -->
+<div class="flex items-center bg-[#f4eee1] p-1 rounded-xl border border-[#e4dccb] text-xs font-black">
+<button class="px-3 py-1 rounded-lg bg-white text-brand-700 shadow-sm border border-[#ded5c2]" id="tab-daily" onclick="switchHeroTab('daily')">Daily Habits</button>
+<button class="px-3 py-1 rounded-lg text-[#757264] hover:text-[#22221b] transition-colors" id="tab-journey" onclick="switchHeroTab('journey')">Milestones</button>
+</div>
+</div>
+<!-- TAB 1: DAILY HABITS CONTENT -->
+<div class="space-y-4" id="content-daily">
+<!-- Streak & Multiplier Stat Bar -->
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-gradient-to-br from-[#fff7ed] to-[#ffedd5] border-2 border-[#fed7aa] border-b-4 border-b-[#fdba74] p-3 rounded-2xl flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/90 flex items-center justify-center text-2xl shadow-sm">🔥</div>
+<div>
+<span class="text-[10px] uppercase font-black tracking-wider text-streak-700 block">Current Streak</span>
+<span class="text-lg font-black text-[#22221b]">48 Days</span>
+</div>
+</div>
+<div class="bg-gradient-to-br from-[#f0f9ff] to-[#e0f2fe] border-2 border-[#bae6fd] border-b-4 border-b-[#7dd3fc] p-3 rounded-2xl flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white/90 flex items-center justify-center text-2xl shadow-sm">⚡</div>
+<div>
+<span class="text-[10px] uppercase font-black tracking-wider text-gem-600 block">XP Multiplier</span>
+<span class="text-lg font-black text-[#22221b]">2.5x Multiplier</span>
+</div>
+</div>
+</div>
+<!-- Interactive Habit Items with realistic toggle buttons -->
+<div class="space-y-2.5">
+<!-- Habit 1 -->
+<div class="flex items-center justify-between p-3.5 bg-[#fbfaf6] hover:bg-[#f6f2e8] border-2 border-[#ede6d5] border-b-4 border-b-[#ded5bf] rounded-2xl transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-blue-100 border border-blue-200 flex items-center justify-center text-base">💻</div>
+<div>
+<div class="text-xs sm:text-sm font-black text-[#22221b]">Deep Work Code Block (90m)</div>
+<div class="text-[10px] font-bold text-streak-600 flex items-center gap-1">
+<span class="">🔥 48 days streak</span>
+<span class="text-[#b3ac9b]">•</span>
+<span class="text-brand-600">+60 XP</span>
+</div>
+</div>
+</div>
+<button class="habit-check-btn checked" onclick="this.classList.toggle('checked'); this.classList.toggle('unchecked');">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</button>
+</div>
+<!-- Habit 2 -->
+<div class="flex items-center justify-between p-3.5 bg-[#fbfaf6] hover:bg-[#f6f2e8] border-2 border-[#ede6d5] border-b-4 border-b-[#ded5bf] rounded-2xl transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-emerald-100 border border-emerald-200 flex items-center justify-center text-base">🏃</div>
+<div>
+<div class="text-xs sm:text-sm font-black text-[#22221b]">Morning 5K Trail Run</div>
+<div class="text-[10px] font-bold text-gem-600 flex items-center gap-1">
+<span class="">⚡ Logged at 06:45 AM</span>
+<span class="text-[#b3ac9b]">•</span>
+<span class="text-brand-600">+50 XP</span>
+</div>
+</div>
+</div>
+<button class="habit-check-btn checked" onclick="this.classList.toggle('checked'); this.classList.toggle('unchecked');">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</button>
+</div>
+<!-- Habit 3 -->
+<div class="flex items-center justify-between p-3.5 bg-[#fbfaf6] hover:bg-[#f6f2e8] border-2 border-[#ede6d5] border-b-4 border-b-[#ded5bf] rounded-2xl transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-xl bg-amber-100 border border-amber-200 flex items-center justify-center text-base">📖</div>
+<div>
+<div class="text-xs sm:text-sm font-black text-[#22221b]">Read 20 Pages (Al-Muqaddimah)</div>
+<div class="text-[10px] font-bold text-amber-700">Ready to complete for today</div>
+</div>
+</div>
+<button class="habit-check-btn unchecked" onclick="this.classList.toggle('checked'); this.classList.toggle('unchecked');">
+<span class="material-symbols-outlined text-sm font-bold">check</span>
+</button>
+</div>
+</div>
+<!-- Consistency Progress Bar -->
+<div class="pt-2">
+<div class="flex justify-between items-center text-xs font-black text-[#525046] mb-1.5">
+<span class="flex items-center gap-1.5">
+<span class="text-brand-600 font-black">●</span>
+                    Weekly Consistency
+                  </span>
+<span class="text-brand-700 bg-brand-100 px-2 py-0.5 rounded-full font-black border border-brand-200 text-[11px]">88% Target Reached</span>
+</div>
+<div class="w-full h-3.5 bg-[#ede6d5] rounded-full overflow-hidden p-0.5 border border-[#dfd6c0]">
+<div class="h-full bg-gradient-to-r from-brand-500 to-brand-400 rounded-full transition-all duration-500 shadow-inner" style="width: 88%;"></div>
+</div>
+</div>
+</div>
+<!-- TAB 2: MILESTONES CONTENT (HIDDEN BY DEFAULT) -->
+<div class="hidden space-y-4 py-2" id="content-journey">
+<div class="p-4 rounded-2xl bg-amber-50 border-2 border-amber-200 border-b-4 border-b-amber-300 text-center">
+<div class="text-3xl mb-1">👑</div>
+<div class="text-xs font-black text-amber-900 uppercase tracking-wider">Upcoming Milestone</div>
+<div class="text-base font-black text-[#22221b]">Day 50: The Titan Master Badge</div>
+<div class="text-xs font-bold text-amber-800 mt-1">Only 2 days remaining to claim permanent status!</div>
+</div>
+<div class="grid grid-cols-3 gap-2 text-center text-xs font-bold">
+<div class="p-2.5 rounded-xl bg-[#f8f5ed] border border-[#e4dccb]">
+<div class="font-black text-brand-600">Day 7 ✓</div>
+<div class="text-[11px] text-[#787364]">Shield Unlocked</div>
+</div>
+<div class="p-2.5 rounded-xl bg-[#f8f5ed] border border-[#e4dccb]">
+<div class="font-black text-brand-600">Day 21 ✓</div>
+<div class="text-[11px] text-[#787364]">Habit Autopilot</div>
+</div>
+<div class="p-2.5 rounded-xl bg-amber-100/70 border border-amber-300">
+<div class="font-black text-amber-800">Day 50 🔒</div>
+<div class="text-[11px] text-amber-900">Titan Trophy</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE PLAYGROUND: STREAK SIMULATOR WIDGET -->
+<!-- SECTION: THE 50-DAY JOURNEY ROADMAP (ILLUSTRATED PROGRESSION) -->
+<!-- SECTION: ENGINEERED FOR CONSISTENCY (4 DISTINCT THEMED PILLARS) -->
+<!-- SECTION: REAL USER STORIES (SOCIAL PROOF WITH HABIT BADGES) -->
+<!-- SECTION: CALL TO ACTION -->
+<!-- SECTION 2: THE PROBLEM -->
+<!-- SECTION 3: HOW IT WORKS -->
+<section class="py-24 bg-[#F6F3EC] border-b border-[#ECE6D9]" id="how-it-works">
+<div class="max-w-6xl mx-auto px-6 text-center"><div class="text-center max-w-xl mx-auto mb-16"><h2 class="text-3xl md:text-5xl font-black text-[#22221b] mb-4 tracking-tight leading-tight">How it <span class="text-brand-600">works.</span></h2><p class="text-base md:text-lg font-bold text-[#686354] leading-relaxed">Three steps to momentum.</p></div><div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left"><div class="tactile-card-lg p-6 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-6 border-b-brand-600 flex flex-col justify-between relative group hover:scale-[1.02] transition-transform"><div class="absolute top-0 right-0 w-28 h-28 bg-brand-50/80 rounded-bl-full pointer-events-none -z-0"></div><div class="relative z-10"><div class="flex items-center justify-between mb-4"><span class="w-9 h-9 rounded-2xl bg-brand-500 text-white font-black text-sm flex items-center justify-center border-2 border-brand-600 shadow-sm shadow-brand-500/30">1</span><span class="text-[11px] font-black text-brand-700 uppercase tracking-wider bg-brand-100/70 border border-brand-200 px-2.5 py-0.5 rounded-full">⚡ Setup</span></div><h3 class="text-lg font-black text-[#22221b] mb-2">Create a tracker</h3><p class="text-xs font-bold text-[#686558] leading-relaxed mb-6">Choose Daily or Flexible, pick a category, set an optional deadline, and establish your rhythm.</p></div><div class="p-3.5 bg-[#FAF8F5] rounded-xl border border-brand-200/80 space-y-2 relative z-10 shadow-xs"><div class="text-[11px] font-black text-[#757264] uppercase flex items-center gap-1.5"><span class="">Tracker Type</span><span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span></div><div class="flex items-center gap-2"><span class="px-2.5 py-1 rounded-lg bg-brand-500 text-white text-xs font-black shadow-xs flex items-center gap-1 border-b-2 border-brand-700"><span class="material-symbols-outlined text-sm font-black">check</span> Daily</span><span class="px-2.5 py-1 rounded-lg bg-white border border-[#ded5c2] text-[#757264] text-xs font-bold hover:border-brand-300">Flexible</span></div><div class="pt-1 text-[11px] font-extrabold text-[#22221b] flex items-center justify-between border-t border-[#ede6d5]"><span class="flex items-center gap-1">🎯 Goal: Read 20 Mins</span><span class="text-brand-800 bg-brand-100 border border-brand-300 px-2.5 py-0.5 rounded-full text-[10px] font-black shadow-xs">3 Months</span></div></div></div><div class="tactile-card-lg p-6 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-6 border-b-[#ff9600] flex flex-col justify-between relative group hover:scale-[1.02] transition-transform"><div class="absolute top-0 right-0 w-28 h-28 bg-amber-50/80 rounded-bl-full pointer-events-none -z-0"></div><div class="relative z-10"><div class="flex items-center justify-between mb-4"><span class="w-9 h-9 rounded-2xl bg-[#ff9600] text-white font-black text-sm flex items-center justify-center border-2 border-[#e07e00] shadow-sm shadow-amber-500/30">2</span><span class="text-[11px] font-black text-streak-700 uppercase tracking-wider bg-amber-100 border border-amber-300 px-2.5 py-0.5 rounded-full">✍️ Log</span></div><h3 class="text-lg font-black text-[#22221b] mb-2">Add an entry</h3><p class="text-xs font-bold text-[#686558] leading-relaxed mb-6">A note plus a photo, video or link. Choose to publish it to your followers or keep it completely private.</p></div><div class="p-3.5 bg-gradient-to-br from-[#fffdfa] to-[#fbf7ee] rounded-xl border border-amber-200/80 space-y-2 relative z-10 shadow-xs"><div class="text-xs font-bold text-[#22221b] bg-white p-2.5 rounded-lg border border-amber-200/70 shadow-2xs">"Hit day 14! Finally mastered async streams in Dart... 🚀"</div><div class="flex items-center justify-between pt-1"><div class="flex items-center gap-2 text-amber-700"><span class="material-symbols-outlined text-sm bg-amber-100/70 p-1 rounded-md border border-amber-200">photo_camera</span><span class="material-symbols-outlined text-sm bg-amber-100/70 p-1 rounded-md border border-amber-200">link</span></div><span class="px-2.5 py-0.5 rounded-full bg-brand-100 text-brand-800 text-[10px] font-black border border-brand-300 flex items-center gap-1 shadow-2xs">🌱 Public</span></div></div></div><div class="tactile-card-lg p-6 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-6 border-b-[#0284c7] flex flex-col justify-between relative group hover:scale-[1.02] transition-transform"><div class="absolute top-0 right-0 w-28 h-28 bg-blue-50/80 rounded-bl-full pointer-events-none -z-0"></div><div class="relative z-10"><div class="flex items-center justify-between mb-4"><span class="w-9 h-9 rounded-2xl bg-[#0284c7] text-white font-black text-sm flex items-center justify-center border-2 border-[#0369a1] shadow-sm shadow-blue-500/30">3</span><span class="text-[11px] font-black text-blue-900 uppercase tracking-wider bg-blue-100 border border-blue-200 px-2.5 py-0.5 rounded-full">🚀 Momentum</span></div><h3 class="text-lg font-black text-[#22221b] mb-2">Watch it grow</h3><p class="text-xs font-bold text-[#686558] leading-relaxed mb-6">Your streak builds, your calendar fills with green, and people follow your real-time journey.</p></div><div class="p-3.5 bg-gradient-to-br from-[#f8fbff] to-[#f0f8ff] rounded-xl border border-blue-200/80 flex items-center justify-between relative z-10 shadow-xs"><div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center text-xl shadow-2xs animate-flame-glow">🔥</div><div><div class="text-xs font-black text-[#22221b] flex items-center gap-1.5">14 Day Streak <span class="text-brand-600 text-[10px]">● Active</span></div><div class="text-[10px] font-bold text-brand-700 bg-brand-100/60 px-2 py-0.5 rounded-md inline-block mt-0.5">+3 new followers today</div></div></div><div class="w-8 h-8 rounded-xl bg-white border border-blue-200 flex items-center justify-center text-blue-600 shadow-2xs"><span class="material-symbols-outlined text-brand-600 font-black text-lg">trending_up</span></div></div></div></div></div>
+</section>
+<!-- SECTION 4: TWO TRACKER TYPES -->
+<section class="py-24 bg-[#FAF8F5] border-b border-[#ECE6D9]" id="tracker-types">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center max-w-xl mx-auto mb-16"><h2 class="text-3xl md:text-5xl font-black text-[#22221b] mb-4 tracking-tight leading-tight">Daily or <span class="text-brand-600">Flexible.</span></h2><p class="text-base md:text-lg font-bold text-[#686354] leading-relaxed">Choose the cadence that fits your goals.</p></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8"><div class="tactile-card-lg p-8 bg-white rounded-2xl border-2 border-brand-200 border-b-6 border-b-brand-600 flex flex-col justify-between relative overflow-hidden group shadow-md hover:scale-[1.01] transition-all">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-brand-100/50 rounded-full blur-2xl group-hover:scale-125 transition-transform"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-4">
+<span class="px-3 py-1 rounded-full bg-brand-100 text-brand-800 text-xs font-black border border-brand-300 uppercase tracking-wide flex items-center gap-1.5 shadow-2xs">
+<span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span> Daily Cadence
+</span>
+<span class="text-xs font-black text-[#787364] bg-[#fbfaf6] px-2.5 py-1 rounded-lg border border-[#ede6d5]">Day by Day</span>
+</div>
+<h3 class="text-2xl font-black text-[#22221b] mb-2 flex items-center gap-2">Daily <span class="text-xl">🌱</span></h3>
+<p class="text-sm font-bold text-[#686558] leading-relaxed mb-6">
+Document your journey every single day. Entries automatically become Day 1, Day 2, Day 3... building an unbroken timeline of growth.
+</p>
+<div class="text-xs font-bold text-[#757264] mb-6 flex items-center gap-2 p-2.5 rounded-xl bg-brand-50/60 border border-brand-200/70">
+<span class="material-symbols-outlined text-sm text-brand-600">lightbulb</span>
+<span class="">Example: <strong class="text-[#22221b] font-black">Learn Flutter in 3 Months</strong></span>
+</div>
+</div>
+<div class="p-4 bg-gradient-to-br from-[#fafcf7] to-[#f4f9ef] rounded-2xl border-2 border-brand-200/80 space-y-3 relative z-10 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-xs font-black text-white bg-brand-500 px-3 py-1 rounded-lg border-b-2 border-brand-700 shadow-xs">Day 12</span>
+<span class="text-xs font-black text-[#22221b]">State Management Basics</span>
+</div>
+<span class="text-xs font-black text-streak-700 bg-gradient-to-r from-amber-100 to-amber-200/80 border border-amber-300 px-3 py-1 rounded-full shadow-2xs flex items-center gap-1">
+<span class="">🔥</span> 12-day streak
+</span>
+</div>
+<p class="text-xs font-bold text-[#686558] bg-white p-3 rounded-xl border border-brand-100/90 shadow-2xs">Built a reactive cart counter using Provider. Smooth flow and clean code separation!</p>
+</div>
+</div>
+<div class="tactile-card-lg p-8 bg-white rounded-2xl border-2 border-blue-200 border-b-6 border-b-[#0284c7] flex flex-col justify-between relative overflow-hidden group shadow-md hover:scale-[1.01] transition-all">
+<div class="absolute -top-10 -right-10 w-40 h-40 bg-blue-100/50 rounded-full blur-2xl group-hover:scale-125 transition-transform"></div>
+<div class="relative z-10">
+<div class="flex items-center justify-between mb-4">
+<span class="px-3 py-1 rounded-full bg-blue-100 text-blue-900 text-xs font-black border border-blue-200 uppercase tracking-wide flex items-center gap-1.5 shadow-2xs">
+<span class="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></span> Custom Frequency
+</span>
+<span class="text-xs font-black text-[#787364] bg-[#fbfaf6] px-2.5 py-1 rounded-lg border border-[#ede6d5]">Session Based</span>
+</div>
+<h3 class="text-2xl font-black text-[#22221b] mb-2 flex items-center gap-2">Flexible <span class="text-xl">⚡</span></h3>
+<p class="text-sm font-bold text-[#686558] leading-relaxed mb-6">
+For habits, sessions, and milestone attempts where daily pressure doesn't fit. You decide when and how often to record.
+</p>
+<div class="text-xs font-bold text-[#757264] mb-6 flex items-center gap-2 p-2.5 rounded-xl bg-blue-50/60 border border-blue-200/70">
+<span class="material-symbols-outlined text-sm text-blue-700">lightbulb</span>
+<span class="">Examples: <strong class="text-[#22221b] font-black">Gym 4x a week, Break my 5K record</strong></span>
+</div>
+</div>
+<div class="p-4 bg-gradient-to-br from-[#f8fbff] to-[#f0f7ff] rounded-2xl border-2 border-blue-200/80 space-y-3 relative z-10 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="text-xs font-black text-white bg-[#0284c7] px-3 py-1 rounded-lg border-b-2 border-[#0369a1] shadow-xs">Attempt 3</span>
+<span class="text-xs font-black text-[#22221b]">Interval Training Session</span>
+</div>
+<span class="text-xs font-black text-blue-900 bg-blue-100 border border-blue-200 px-3 py-1 rounded-full shadow-2xs flex items-center gap-1">
+<span class="">🎯</span> 3 of 4 this week
+</span>
+</div>
+<div class="space-y-1.5 pt-1">
+<div class="flex justify-between text-[11px] font-black text-blue-900">
+<span class="">Target Progress</span>
+<span class="">75%</span>
+</div>
+<div class="w-full h-3 bg-[#ede6d5] rounded-full overflow-hidden p-0.5 border border-[#dfd6c0]">
+<div class="h-full bg-gradient-to-r from-blue-500 to-brand-500 rounded-full transition-all duration-500 shadow-inner" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+</div></div>
+</div>
+</section>
+<!-- SECTION 5: CALENDAR AND STREAKS -->
+<section class="py-24 bg-[#F6F3EC] border-b border-[#ECE6D9]" id="calendar-streaks">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center max-w-xl mx-auto mb-16"><h2 class="text-3xl md:text-5xl font-black text-[#22221b] mb-4 tracking-tight leading-tight">Visual <span class="text-brand-600">consistency.</span></h2><p class="text-base md:text-lg font-bold text-[#686354] leading-relaxed">A clear log of showing up every day.</p></div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+<!-- Left Side: Realistic Calendar Mockup -->
+<div class="lg:col-span-7">
+<div class="tactile-card-xl bg-white p-7 rounded-2xl border-2 border-[#ebe3d0] border-b-6 border-b-[#ded5bf] shadow-sm">
+<div class="flex items-center justify-between pb-4 mb-5 border-b-2 border-[#f0ebd9]">
+<div class="flex items-center gap-2">
+<span class="text-base font-black text-[#22221b]">October 2025</span>
+<span class="text-xs font-bold text-[#787364]">Overview</span>
+</div>
+<span class="text-xs font-black text-streak-700 bg-amber-100 border border-amber-300 px-3 py-1 rounded-full">
+              🔥 12 day streak, best 20
+            </span>
+</div>
+<!-- Calendar Days Grid -->
+<div class="grid grid-cols-7 gap-2 text-center text-xs font-bold text-[#757264] mb-2">
+<span class="">Mo</span><span class="">Tu</span><span class="">We</span><span class="">Th</span><span class="">Fr</span><span class="">Sa</span><span class="">Su</span>
+</div>
+<div class="grid grid-cols-7 gap-2 text-center text-xs font-black">
+<div class="p-2 text-[#b3ac9b]">29</div>
+<div class="p-2 text-[#b3ac9b]">30</div>
+<div class="p-2 rounded-xl bg-brand-100 text-brand-800 border border-brand-200">1</div>
+<div class="p-2 rounded-xl bg-brand-100 text-brand-800 border border-brand-200">2</div>
+<div class="p-2 rounded-xl bg-brand-100 text-brand-800 border border-brand-200">3</div>
+<div class="p-2 rounded-xl bg-[#FAF8F5] text-[#787364]">4</div>
+<div class="p-2 rounded-xl bg-brand-100 text-brand-800 border border-brand-200">5</div>
+<div class="p-2 rounded-xl bg-brand-100 text-brand-800 border border-brand-200">6</div>
+<div class="p-2 rounded-xl bg-brand-100 text-brand-800 border border-brand-200">7</div>
+<div class="p-2 rounded-xl bg-brand-100 text-brand-800 border border-brand-200">8</div>
+<div class="p-2 rounded-xl bg-brand-100 text-brand-800 border border-brand-200">9</div>
+<div class="p-2 rounded-xl bg-brand-100 text-brand-800 border border-brand-200">10</div>
+<div class="p-2 rounded-xl bg-brand-100 text-brand-800 border border-brand-200">11</div>
+<!-- Today: highlighted -->
+<div class="p-2 rounded-xl bg-brand-500 text-white border-2 border-brand-600 shadow-sm">12</div>
+<div class="p-2 rounded-xl bg-[#FAF8F5] text-[#787364]">13</div>
+<div class="p-2 rounded-xl bg-[#FAF8F5] text-[#787364]">14</div>
+<div class="p-2 rounded-xl bg-[#FAF8F5] text-[#787364]">15</div>
+<div class="p-2 rounded-xl bg-[#FAF8F5] text-[#787364]">16</div>
+<div class="p-2 rounded-xl bg-[#FAF8F5] text-[#787364]">17</div>
+<div class="p-2 rounded-xl bg-[#FAF8F5] text-[#787364]">18</div>
+<div class="p-2 rounded-xl bg-[#FAF8F5] text-[#787364]">19</div>
+</div>
+</div>
+</div>
+<!-- Right Side: 3 Points -->
+<div class="lg:col-span-5 space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-white border border-[#ded5c2] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-brand-600 font-bold text-xl">circle</span>
+</div>
+<div>
+<h3 class="text-base font-black text-[#22221b] mb-1">A circle for every day you show up.</h3>
+<p class="text-xs font-bold text-[#686558] leading-relaxed">Fill your month with clear green badges simply by publishing or writing a private reflection.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-white border border-[#ded5c2] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-streak-600 font-bold text-xl">local_fire_department</span>
+</div>
+<div>
+<h3 class="text-base font-black text-[#22221b] mb-1">Streaks that match your goal, in days or in weeks.</h3>
+<p class="text-xs font-bold text-[#686558] leading-relaxed">Count unbroken consecutive days, or flexible weekly commitments with customizable thresholds.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-white border border-[#ded5c2] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[#787364] font-bold text-xl">lock</span>
+</div>
+<div>
+<h3 class="text-base font-black text-[#22221b] mb-1">Public or private, you decide.</h3>
+<p class="text-xs font-bold text-[#686558] leading-relaxed">Keep personal records completely discreet, or toggle them public to cheer on friends and get cheered back.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: COMMUNITY -->
+<section class="py-24 bg-[#FAF8F5] border-b border-[#ECE6D9]" id="community-feed">
+<div class="max-w-6xl mx-auto px-6">
+<div class="text-center max-w-xl mx-auto mb-16"><h2 class="text-3xl md:text-5xl font-black text-[#22221b] mb-4 tracking-tight leading-tight">The <span class="text-brand-600">Community.</span></h2><p class="text-base md:text-lg font-bold text-[#686354] leading-relaxed">Follow friends and cheer streaks together.</p></div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Post 1: Coding -->
+<div class="tactile-card-lg p-6 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-6 border-b-[#ded5bf] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-blue-100 text-blue-900 border border-blue-200 flex items-center justify-center font-black text-xs">AD</div>
+<div>
+<div class="text-xs font-black text-[#22221b]">Ahmad</div>
+<div class="text-[10px] font-bold text-[#757264]">@ahmad_dev</div>
+</div>
+</div>
+<button class="px-3 py-1 rounded-full bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 text-xs font-black cursor-pointer transition-colors">Follow</button>
+</div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-extrabold text-[#22221b]">Learn Flutter in 3 Months</span>
+<span class="text-[10px] font-black text-streak-700 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full">Day 42</span>
+</div>
+<p class="text-xs font-bold text-[#444238] leading-relaxed mb-4">
+            "Completed the backend REST integration today. Offline caching with Hive is blazing fast!"
+          </p>
+<!-- Code Preview Box -->
+<div class="p-3 bg-[#FAF8F5] rounded-xl border border-[#ded5c2] text-[11px] font-mono text-[#525046] mb-4">
+<code>await box.put('streak', 42);</code>
+</div>
+</div>
+<div class="pt-3 border-t border-[#f0ebd9] flex items-center justify-between text-xs font-bold text-[#757264]">
+<span class="flex items-center gap-1">👏 18 cheers</span>
+<span class="flex items-center gap-1">💬 5 comments</span>
+</div>
+</div>
+<!-- Post 2: Fitness -->
+<div class="tactile-card-lg p-6 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-6 border-b-[#ded5bf] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-emerald-100 text-brand-800 border border-emerald-200 flex items-center justify-center font-black text-xs">SR</div>
+<div>
+<div class="text-xs font-black text-[#22221b]">Sara</div>
+<div class="text-[10px] font-bold text-[#757264]">@sara_runs</div>
+</div>
+</div>
+<button class="px-3 py-1 rounded-full bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 text-xs font-black cursor-pointer transition-colors">Follow</button>
+</div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-extrabold text-[#22221b]">Break my 5K record</span>
+<span class="text-[10px] font-black text-streak-700 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full">Day 18</span>
+</div>
+<p class="text-xs font-bold text-[#444238] leading-relaxed mb-4">
+            "Paced at 4:48/km on the morning trail. Shaved 12 seconds off my split without feeling exhausted!"
+          </p>
+<!-- Route preview box -->
+<div class="p-3 bg-[#FAF8F5] rounded-xl border border-[#ded5c2] flex items-center justify-between text-xs font-bold text-[#525046] mb-4">
+<span class="flex items-center gap-1.5">📍 Coastal Park Loop</span>
+<span class="text-brand-700 font-black">5.02 km</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#f0ebd9] flex items-center justify-between text-xs font-bold text-[#757264]">
+<span class="flex items-center gap-1">👏 34 cheers</span>
+<span class="flex items-center gap-1">💬 8 comments</span>
+</div>
+</div>
+<!-- Post 3: Language -->
+<div class="tactile-card-lg p-6 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-6 border-b-[#ded5bf] flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2.5">
+<div class="w-9 h-9 rounded-full bg-amber-100 text-amber-900 border border-amber-200 flex items-center justify-center font-black text-xs">OR</div>
+<div>
+<div class="text-xs font-black text-[#22221b]">Omar</div>
+<div class="text-[10px] font-bold text-[#757264]">@omar_reads</div>
+</div>
+</div>
+<button class="px-3 py-1 rounded-full bg-brand-50 hover:bg-brand-100 text-brand-700 border border-brand-200 text-xs font-black cursor-pointer transition-colors">Follow</button>
+</div>
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-extrabold text-[#22221b]">Daily English Practice</span>
+<span class="text-[10px] font-black text-streak-700 bg-amber-100 border border-amber-300 px-2 py-0.5 rounded-full">Day 28</span>
+</div>
+<p class="text-xs font-bold text-[#444238] leading-relaxed mb-4">
+            "Read an essay on cognitive ergonomics and wrote 300 words summarizing the main framework."
+          </p>
+<!-- Study notes box -->
+<div class="p-3 bg-[#FAF8F5] rounded-xl border border-[#ded5c2] text-xs font-bold text-[#525046] flex items-center justify-between mb-4">
+<span class="flex items-center gap-1.5">📝 12 new vocabulary cards</span>
+<span class="text-brand-700 font-black">30 mins</span>
+</div>
+</div>
+<div class="pt-3 border-t border-[#f0ebd9] flex items-center justify-between text-xs font-bold text-[#757264]">
+<span class="flex items-center gap-1">👏 21 cheers</span>
+<span class="flex items-center gap-1">💬 3 comments</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 7: SMALL HELPERS -->
+<!-- SECTION 8: PRICING AND FAQ -->
+<section class="py-24 border-b border-[#ECE6D9] bg-[#F6F3EC]" id="pricing-faq">
+<div class="max-w-4xl mx-auto px-6">
+<div class="text-center max-w-xl mx-auto mb-12"><h2 class="text-3xl md:text-5xl font-black text-[#22221b] mb-4 tracking-tight leading-tight">Simple <span class="text-brand-600">pricing.</span></h2><p class="text-base md:text-lg font-bold text-[#686354] leading-relaxed">Free forever. Upgrade when you need more.</p></div>
+<!-- Toggle Pill -->
+<div class="flex items-center justify-center gap-3 mb-12">
+<div class="inline-flex items-center bg-[#ede7d8] rounded-full p-1 border border-[#dfd7c4]">
+<button class="px-4 py-1.5 rounded-full text-xs font-black bg-white text-[#2b2b24] shadow-sm border border-[#ded5c2]">Monthly</button>
+<button class="px-4 py-1.5 rounded-full text-xs font-black text-[#757264] hover:text-[#2b2b24] transition-colors flex items-center gap-1">
+<span class="">Yearly</span>
+<span class="text-[10px] font-black text-brand-700 bg-brand-100 px-1.5 py-0.5 rounded-full">Save 20%</span>
+</button>
+</div>
+</div>
+<!-- Pricing Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Free Plan -->
+<div class="tactile-card-lg p-8 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-6 border-b-[#ded5bf] flex flex-col justify-between">
+<div>
+<div class="text-xs font-black text-[#757264] uppercase tracking-wider mb-2">Starter</div>
+<h3 class="text-2xl font-black text-[#22221b] mb-4">Free</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-black text-[#22221b]">$0</span>
+<span class="text-xs font-bold text-[#757264]">/ month</span>
+</div>
+<ul class="space-y-3 text-xs font-bold text-[#444238] mb-8">
+<li class="flex items-center gap-2"><span class="text-brand-600 font-black">✓</span> Unlimited trackers &amp; entries</li>
+<li class="flex items-center gap-2"><span class="text-brand-600 font-black">✓</span> Daily &amp; flexible streak calendars</li>
+<li class="flex items-center gap-2"><span class="text-brand-600 font-black">✓</span> Community follow &amp; cheers</li>
+<li class="flex items-center gap-2"><span class="text-brand-600 font-black">✓</span> Limited helper usage</li>
+</ul>
+</div>
+<a class="btn-tactile-white font-black py-3 rounded-full text-center text-xs w-full block" href="#start-cta">
+          Get Started Free
+        </a>
+</div>
+<!-- Premium Plan (Highlighted) -->
+<div class="tactile-card-lg p-8 bg-white rounded-2xl border-2 border-brand-500 border-b-6 border-b-brand-700 flex flex-col justify-between relative shadow-md">
+<div class="absolute -top-3 right-6 bg-brand-500 text-white text-[10px] font-black uppercase px-3 py-0.5 rounded-full">
+          Recommended
+        </div>
+<div>
+<div class="text-xs font-black text-brand-700 uppercase tracking-wider mb-2">Pro Creator</div>
+<h3 class="text-2xl font-black text-[#22221b] mb-4">Premium</h3>
+<div class="flex items-baseline gap-1 mb-6">
+<span class="text-4xl font-black text-[#22221b]">$8</span>
+<span class="text-xs font-bold text-[#757264]">/ month</span>
+</div>
+<ul class="space-y-3 text-xs font-bold text-[#444238] mb-8">
+<li class="flex items-center gap-2"><span class="text-brand-600 font-black">✓</span> Advanced progress analytics</li>
+<li class="flex items-center gap-2"><span class="text-brand-600 font-black">✓</span> Detailed monthly reports</li>
+<li class="flex items-center gap-2"><span class="text-brand-600 font-black">✓</span> Full AI coaching &amp; insights</li>
+<li class="flex items-center gap-2"><span class="text-brand-600 font-black">✓</span> Personalized recommendations</li>
+<li class="flex items-center gap-2"><span class="text-brand-600 font-black">✓</span> More themes &amp; custom styling</li>
+</ul>
+</div>
+<a class="btn-tactile-green font-black py-3 rounded-full text-center text-xs w-full block shadow-md" href="#start-cta">
+          Upgrade to Premium
+        </a>
+</div>
+</div>
+<!-- FAQ Section Accordion -->
+</div>
+</section><section class="py-24 bg-[#FAF8F5] border-b border-[#ECE6D9]" id="faq"><div class="max-w-4xl mx-auto px-6"><div class="text-center max-w-xl mx-auto mb-16"><h2 class="text-3xl md:text-5xl font-black text-[#22221b] mb-4 tracking-tight leading-tight">Questions?</h2><p class="text-base md:text-lg font-bold text-[#686354] leading-relaxed">Quick answers to common questions.</p></div><div class="max-w-3xl mx-auto space-y-4"><div class="tactile-card-lg p-6 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-4 border-b-[#ded5bf] hover:border-brand-300 transition-all"><div class="flex items-center justify-between mb-2"><h3 class="text-base sm:text-lg font-black text-[#22221b] flex items-center gap-2.5"><span class="w-2 h-2 rounded-full bg-brand-500"></span>Is it free?</h3><span class="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#ded5c2] flex items-center justify-center text-[#757264]"><span class="material-symbols-outlined text-base font-bold">expand_more</span></span></div><p class="text-xs sm:text-sm font-bold text-[#686558] leading-relaxed pl-4">Yes, Taqaddomi is free to start with unlimited trackers, entries, and community access.</p></div><div class="tactile-card-lg p-6 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-4 border-b-[#ded5bf] hover:border-brand-300 transition-all"><div class="flex items-center justify-between mb-2"><h3 class="text-base sm:text-lg font-black text-[#22221b] flex items-center gap-2.5"><span class="w-2 h-2 rounded-full bg-brand-500"></span>Can I keep my trackers private?</h3><span class="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#ded5c2] flex items-center justify-center text-[#757264]"><span class="material-symbols-outlined text-base font-bold">expand_more</span></span></div><p class="text-xs sm:text-sm font-bold text-[#686558] leading-relaxed pl-4">Yes, you have full control over privacy on every tracker and entry.</p></div><div class="tactile-card-lg p-6 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-4 border-b-[#ded5bf] hover:border-brand-300 transition-all"><div class="flex items-center justify-between mb-2"><h3 class="text-base sm:text-lg font-black text-[#22221b] flex items-center gap-2.5"><span class="w-2 h-2 rounded-full bg-brand-500"></span>What happens if I miss a day?</h3><span class="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#ded5c2] flex items-center justify-center text-[#757264]"><span class="material-symbols-outlined text-base font-bold">expand_more</span></span></div><p class="text-xs sm:text-sm font-bold text-[#686558] leading-relaxed pl-4">The current streak resets, but your best streak and journey history are always saved.</p></div><div class="tactile-card-lg p-6 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-4 border-b-[#ded5bf] hover:border-brand-300 transition-all"><div class="flex items-center justify-between mb-2"><h3 class="text-base sm:text-lg font-black text-[#22221b] flex items-center gap-2.5"><span class="w-2 h-2 rounded-full bg-brand-500"></span>Is Taqaddomi available in Arabic?</h3><span class="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#ded5c2] flex items-center justify-center text-[#757264]"><span class="material-symbols-outlined text-base font-bold">expand_more</span></span></div><p class="text-xs sm:text-sm font-bold text-[#686558] leading-relaxed pl-4">Yes! Taqaddomi is natively bilingual with full Arabic and English support.</p></div></div></div></section>
+<!-- SECTION 9: FINAL CALL TO ACTION -->
+<section class="py-24 bg-[#FAF8F5]" id="start-cta">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<div class="tactile-card-xl p-10 sm:p-16 bg-white rounded-2xl border-2 border-[#ebe3d0] border-b-6 border-b-[#ded5bf] flex flex-col items-center"><div class="absolute -top-16 -left-16 w-48 h-48 bg-brand-200/50 rounded-full blur-3xl pointer-events-none animate-pulse-soft"></div>
+<div class="absolute -bottom-16 -right-16 w-56 h-56 bg-amber-200/50 rounded-full blur-3xl pointer-events-none animate-float-slow"></div>
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-100 border border-brand-300 text-brand-800 text-xs font-black mb-6 shadow-sm">
+<span class="text-base">⚡</span>
+<span class="">Join 12,000+ daily habit makers today</span>
+</div>
+<h2 class="text-3xl md:text-5xl font-black text-[#22221b] mb-4 tracking-tight relative z-10">Ready for Day 1?</h2>
+<p class="text-base md:text-lg font-bold text-[#686354] max-w-md mx-auto mb-8 relative z-10">Start your daily consistency today.</p>
+<div class="flex flex-col sm:flex-row items-center gap-3 mb-5 relative z-10">
+<a class="btn-tactile-green text-base font-black px-10 py-4 rounded-full flex items-center gap-2.5 shadow-xl hover:scale-105 transition-transform cursor-pointer" href="#how-it-works">
+<span class="">Start your first tracker</span>
+<span class="material-symbols-outlined text-xl font-black">arrow_forward</span>
+</a>
+</div>
+<div class="flex items-center gap-4 text-xs font-extrabold text-[#787364] relative z-10">
+<span class="flex items-center gap-1.5 text-brand-700"><span class="w-2 h-2 rounded-full bg-brand-500"></span> Free to start</span>
+<span class="">•</span>
+<span class="">No credit card required</span>
+<span class="">•</span>
+<span class="">Instant setup</span>
+</div></div>
+</div>
+</section></main>
+<!-- FOOTER -->
+<footer class="bg-white border-t-2 border-[#ece4d2] py-14"><div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-8 pb-10 border-b border-[#ECE6D9]">
+<!-- Logo & Name -->
+<div>
+<div class="flex items-center gap-2 mb-1.5">
+<span class="text-xl font-black text-[#22221b]">Taqaddomi&nbsp;</span>
+</div>
+<p class="text-xs font-bold text-[#757264]">Tactile Daily Habit &amp; Journey Tracker</p>
+</div>
+<!-- Link Groups -->
+<div class="grid grid-cols-3 gap-10 text-xs">
+<div>
+<div class="font-black text-[#22221b] uppercase tracking-wider mb-2.5">Product</div>
+<div class="space-y-2 font-bold text-[#686354]">
+<div><a class="hover:text-brand-600 transition-colors" href="#how-it-works">How it works</a></div>
+<div><a class="hover:text-brand-600 transition-colors" href="#pricing-faq">Pricing</a></div>
+</div>
+</div>
+<div>
+<div class="font-black text-[#22221b] uppercase tracking-wider mb-2.5">Company</div>
+<div class="space-y-2 font-bold text-[#686354]">
+<div><a class="hover:text-brand-600 transition-colors" href="#">About</a></div>
+<div><a class="hover:text-brand-600 transition-colors" href="#">Contact</a></div>
+</div>
+</div>
+<div>
+<div class="font-black text-[#22221b] uppercase tracking-wider mb-2.5">Legal</div>
+<div class="space-y-2 font-bold text-[#686354]">
+<div><a class="hover:text-brand-600 transition-colors" href="#">Privacy</a></div>
+<div><a class="hover:text-brand-600 transition-colors" href="#">Terms</a></div>
+</div>
+</div>
+</div>
+<!-- Language Switcher -->
+<div class="flex items-center bg-[#ede7d8] rounded-full p-1 border border-[#dfd7c4]">
+<button class="px-3 py-1 rounded-full text-xs font-black bg-white text-[#2b2b24] shadow-sm border border-[#ded5c2]" type="button">EN</button>
+<button class="px-3 py-1 rounded-full text-xs font-black text-[#757264] hover:text-[#2b2b24] transition-colors" type="button">AR</button>
+</div>
+</div>
+<div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs font-bold text-[#8a8676]">
+<div class="">© 2025 Taqaddomi. Built to celebrate daily momentum.</div>
+</div>
+</div></footer>
+<!-- Interactive Scripts for Hero Tabs & Simulator -->
+<script>
+  function switchHeroTab(tab) {
+    const tabDaily = document.getElementById('tab-daily');
+    const tabJourney = document.getElementById('tab-journey');
+    const contentDaily = document.getElementById('content-daily');
+    const contentJourney = document.getElementById('content-journey');
+
+    if (tab === 'daily') {
+      tabDaily.className = 'px-3 py-1 rounded-lg bg-white text-brand-700 shadow-sm border border-[#ded5c2]';
+      tabJourney.className = 'px-3 py-1 rounded-lg text-[#757264] hover:text-[#22221b] transition-colors';
+      contentDaily.classList.remove('hidden');
+      contentJourney.classList.add('hidden');
+    } else {
+      tabJourney.className = 'px-3 py-1 rounded-lg bg-white text-amber-800 shadow-sm border border-[#ded5c2]';
+      tabDaily.className = 'px-3 py-1 rounded-lg text-[#757264] hover:text-[#22221b] transition-colors';
+      contentDaily.classList.add('hidden');
+      contentJourney.classList.remove('hidden');
+    }
+  }
+
+  let simStreak = 24;
+  let simXP = 620;
+
+  function triggerSimulateHabit(btn, xpGain, title) {
+    simStreak += 1;
+    simXP += xpGain;
+
+    const streakEl = document.getElementById('sim-streak-count');
+    const xpEl = document.getElementById('sim-xp-count');
+    const bannerEl = document.getElementById('sim-feedback-banner');
+    const feedbackText = document.getElementById('sim-feedback-text');
+
+    streakEl.innerText = simStreak + ' Days';
+    xpEl.innerText = simXP + ' XP';
+
+    streakEl.classList.add('scale-125', 'text-streak-600');
+    setTimeout(() => {
+      streakEl.classList.remove('scale-125', 'text-streak-600');
+    }, 300);
+
+    feedbackText.innerText = `Logged "${title}"! Streak extended to ${simStreak} days (+${xpGain} XP rewarded ✨)`;
+    bannerEl.classList.add('bg-brand-100', 'border-brand-400');
+    setTimeout(() => {
+      bannerEl.classList.remove('bg-brand-100', 'border-brand-400');
+    }, 400);
+  }
+</script>
+
+
+
+
+</body></html>

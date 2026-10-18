@@ -1,0 +1,468 @@
+<!DOCTYPE html><html dir="ltr" lang="en" style=""><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}.tactile-btn{transition:all 0.15s cubic-bezier(0.34, 1.56, 0.64, 1);box-shadow:0 4px 0 rgba(0,0,0,0.1);}.tactile-btn:hover{transform:translateY(-1px);box-shadow:0 5px 0 rgba(0,0,0,0.12);}.tactile-btn:active{transform:translateY(3px);box-shadow:0 1px 0 rgba(0,0,0,0.1);}.tactile-card{box-shadow:0 8px 0 rgba(43,108,0,0.06), 0 2px 12px rgba(0,0,0,0.03);}.tactile-primary-btn{box-shadow:0 4px 0 #1e5000;}.tactile-primary-btn:active{transform:translateY(3px);box-shadow:0 1px 0 #1e5000;}</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "on-error": "#ffffff",
+          "surface-bright": "#fbf9f1",
+          "on-background": "#1b1c17",
+          "surface-container": "#f0eee6",
+          "on-primary-fixed-variant": "#1f5100",
+          "inverse-surface": "#30312c",
+          "tertiary-container": "#ddad00",
+          "error-container": "#ffdad6",
+          "on-secondary-fixed": "#191c21",
+          "tertiary-fixed-dim": "#f4bf00",
+          "secondary-container": "#dedfe6",
+          "surface-container-high": "#eae8e0",
+          "background": "#fbf9f1",
+          "tertiary": "#755b00",
+          "surface-container-highest": "#e4e3db",
+          "on-surface-variant": "#3f4a36",
+          "tertiary-fixed": "#ffdf92",
+          "on-primary": "#ffffff",
+          "on-tertiary-fixed": "#241a00",
+          "on-error-container": "#93000a",
+          "on-secondary-container": "#606368",
+          "secondary-fixed": "#e1e2e9",
+          "on-secondary-fixed-variant": "#44474c",
+          "secondary": "#5c5e64",
+          "on-primary-container": "#1e5000",
+          "secondary-fixed-dim": "#c4c6cd",
+          "inverse-on-surface": "#f3f1e9",
+          "primary-fixed-dim": "#6be026",
+          "on-tertiary": "#ffffff",
+          "on-tertiary-fixed-variant": "#594400",
+          "primary": "#2b6c00",
+          "on-primary-fixed": "#082100",
+          "outline-variant": "#becbb1",
+          "outline": "#6f7b64",
+          "surface-variant": "#e4e3db",
+          "on-secondary": "#ffffff",
+          "surface-dim": "#dcdad2",
+          "inverse-primary": "#6be026",
+          "primary-fixed": "#87fe45",
+          "error": "#ba1a1a",
+          "on-surface": "#1b1c17",
+          "surface-tint": "#2b6c00",
+          "surface": "#fbf9f1",
+          "surface-container-lowest": "#ffffff",
+          "primary-container": "#58cc02",
+          "on-tertiary-container": "#574300",
+          "surface-container-low": "#f6f4ec"
+        },
+        "borderRadius": {
+          "DEFAULT": "1rem",
+          "lg": "2rem",
+          "xl": "3rem",
+          "full": "9999px"
+        },
+        "spacing": {
+          "space-xs": "0.25rem",
+          "margin": "1.25rem",
+          "space-sm": "0.5rem",
+          "space-md": "1rem",
+          "gutter": "1rem",
+          "space-xl": "2.25rem",
+          "space-lg": "1.5rem"
+        },
+        "fontFamily": {
+          "headline-lg": ["Plus Jakarta Sans"],
+          "headline-md": ["Plus Jakarta Sans"],
+          "label-caps": ["Plus Jakarta Sans"],
+          "body-sm": ["Plus Jakarta Sans"],
+          "speech-bubble": ["Plus Jakarta Sans"],
+          "display-hero-mobile": ["Plus Jakarta Sans"],
+          "display-hero": ["Plus Jakarta Sans"],
+          "headline-sm": ["Plus Jakarta Sans"],
+          "label-chunky": ["Plus Jakarta Sans"],
+          "body-lg": ["Plus Jakarta Sans"],
+          "body-md": ["Plus Jakarta Sans"]
+        },
+        "fontSize": {
+          "headline-lg": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+          "headline-md": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+          "label-caps": ["11px", {"lineHeight": "14px", "letterSpacing": "0.08em", "fontWeight": "800"}],
+          "body-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+          "speech-bubble": ["13px", {"lineHeight": "18px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+          "display-hero-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+          "display-hero": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+          "headline-sm": ["16px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "700"}],
+          "label-chunky": ["14px", {"lineHeight": "18px", "letterSpacing": "0.04em", "fontWeight": "800"}],
+          "body-lg": ["16px", {"lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "500"}],
+          "body-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "500"}]
+        }
+      }
+    }
+  }
+</script></head><body class="bg-background font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary"><aside class="fixed left-0 top-0 h-full w-72 bg-[#FAF8F0] border-r-2 border-[#E7E2D2] z-40 flex flex-col justify-between p-5">
+  <div class="flex flex-col gap-5">
+    <!-- Top Logo area: Green Taqaddomi emblem + title + bilingual subtitle -->
+    <div class="flex items-center gap-3 px-2 py-1">
+      <div class="w-11 h-11 rounded-2xl bg-[#58CC02] border-b-4 border-[#46A302] flex items-center justify-center text-white shadow-sm">
+        <span class="material-symbols-outlined text-[24px]">verified</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-black text-xl text-on-surface tracking-tight leading-none">Taqaddomi</span>
+        <span class="text-[11px] font-extrabold text-[#2b6c00] tracking-wide mt-1" dir="rtl">تَقَدُّمي • Habit Hub</span>
+      </div>
+    </div>
+
+    <!-- Standardized + Add Entry Button -->
+    <div class="px-1">
+      <button class="w-full flex items-center justify-center gap-2 h-12 bg-[#58CC02] hover:bg-[#4EBA02] text-white rounded-2xl font-extrabold text-[15px] border-b-4 border-[#3D8F01] active:translate-y-0.5 active:border-b-2 shadow-sm transition-all" type="button">
+        <span class="material-symbols-outlined text-[22px] font-bold">add_circle</span>
+        <span class="">+ Add Entry</span>
+      </button>
+    </div>
+
+    <!-- Clean, consistent navigation links with Community active state -->
+    <nav class="flex flex-col gap-1.5">
+      <a class="flex items-center justify-between px-4 py-3 rounded-2xl text-on-surface-variant font-bold text-sm hover:bg-[#EFEAD9] hover:text-on-surface transition-all" data-path="dashboard" href="#">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-[22px]">space_dashboard</span>
+          <span class="">Dashboard</span>
+        </div>
+      </a>
+      <a class="flex items-center justify-between px-4 py-3 rounded-2xl bg-[#EBE5CF] text-[#2b6c00] font-black text-sm border-2 border-[#D8CEB0]" data-path="community-feed" href="#">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-[22px]">explore</span>
+          <span class="">Community &amp; Discover</span>
+        </div>
+        <span class="w-2.5 h-2.5 rounded-full bg-[#58CC02]"></span>
+      </a>
+      <a class="flex items-center justify-between px-4 py-3 rounded-2xl text-on-surface-variant font-bold text-sm hover:bg-[#EFEAD9] hover:text-on-surface transition-all" data-path="my-trackers" href="#">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-[22px]">track_changes</span>
+          <span class="">My Trackers</span>
+        </div>
+      </a>
+      <a class="flex items-center justify-between px-4 py-3 rounded-2xl text-on-surface-variant font-bold text-sm hover:bg-[#EFEAD9] hover:text-on-surface transition-all" data-path="insights-and-recap" href="#">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-[22px]">insights</span>
+          <span class="">Insights &amp; Recap</span>
+        </div>
+      </a>
+      <a class="flex items-center justify-between px-4 py-3 rounded-2xl text-on-surface-variant font-bold text-sm hover:bg-[#EFEAD9] hover:text-on-surface transition-all" data-path="notifications" href="#">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-[22px]">notifications</span>
+          <span class="">Notifications</span>
+        </div>
+        <span class="px-2 py-0.5 rounded-full bg-[#FFC800] text-[#4F3600] font-extrabold text-[11px] border-b-2 border-[#D4A300]">3</span>
+      </a>
+      <a class="flex items-center justify-between px-4 py-3 rounded-2xl text-on-surface-variant font-bold text-sm hover:bg-[#EFEAD9] hover:text-on-surface transition-all" data-path="settings" href="#">
+        <div class="flex items-center gap-3">
+          <span class="material-symbols-outlined text-[22px]">settings</span>
+          <span class="">Settings</span>
+        </div>
+      </a>
+    </nav>
+  </div>
+
+  <!-- User Profile Pill -->
+  <div class="p-1">
+    <div class="flex items-center justify-between p-3 rounded-2xl bg-white border-2 border-[#E7E2D2] border-b-4 hover:bg-[#FAF8F0] transition-all cursor-pointer">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl bg-[#58CC02] border-b-2 border-[#3D8F01] flex items-center justify-center font-bold text-white text-base">
+          🌱
+        </div>
+        <div class="flex flex-col">
+          <span class="font-extrabold text-sm text-on-surface leading-tight">Kareem Zaid</span>
+          <span class="text-[11px] font-bold text-outline leading-tight">@kareemz • Lvl 8 🔥 14d</span>
+        </div>
+      </div>
+      <span class="material-symbols-outlined text-outline text-[20px]">expand_more</span>
+    </div>
+  </div>
+</aside><div class="pl-72"><header class="h-20 border-b border-[#E7E2D2] bg-[#FAF8F5]/80 backdrop-blur-md px-8 flex items-center justify-between sticky top-0 z-30">
+  <div class="flex items-center flex-1 max-w-md">
+    <div class="flex items-center w-full h-11 px-4 rounded-2xl bg-white border-2 border-[#E7E2D2] focus-within:border-[#58CC02] text-on-surface-variant transition-colors">
+      <span class="material-symbols-outlined text-[20px] text-outline mr-2 font-bold">search</span>
+      <input class="w-full bg-transparent border-none outline-none font-bold text-sm text-on-surface placeholder:text-outline" placeholder="Search trackers, habits, streaks..." type="text">
+    </div>
+  </div>
+  <div class="flex items-center gap-2.5">
+    <button class="flex items-center gap-1.5 px-3.5 py-1.5 rounded-2xl bg-white border-2 border-[#E7E2D2] border-b-4 hover:bg-[#F2EDE0] font-extrabold text-xs text-on-surface transition-all active:translate-y-0.5 active:border-b-2" title="Switch Language" type="button">
+      <span class="material-symbols-outlined text-[18px] text-[#58CC02]">translate</span>
+      <span class="">العربية / EN</span>
+    </button>
+    <button class="w-10 h-10 flex items-center justify-center rounded-2xl bg-white border-2 border-[#E7E2D2] border-b-4 text-on-surface hover:bg-[#F2EDE0] transition-all active:translate-y-0.5 active:border-b-2" title="Toggle Appearance" type="button">
+      <span class="material-symbols-outlined text-[20px] text-[#FFC800]">wb_sunny</span>
+    </button>
+    <button class="relative w-10 h-10 flex items-center justify-center rounded-2xl bg-white border-2 border-[#E7E2D2] border-b-4 text-on-surface hover:bg-[#F2EDE0] transition-all active:translate-y-0.5 active:border-b-2" title="View Notifications" type="button">
+      <span class="material-symbols-outlined text-[20px] text-outline">notifications</span>
+      <span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-[#FF4B4B] ring-2 ring-white"></span>
+    </button>
+    <div class="w-9 h-9 rounded-2xl bg-[#58CC02] border-b-2 border-[#3D8F01] flex items-center justify-center font-bold text-white text-sm ml-1">
+      K
+    </div>
+  </div>
+</header><main class="w-full bg-background min-h-screen py-3"><div class="flex flex-col w-full">
+<div class="w-full mx-auto px-margin py-space-lg flex flex-col gap-space-lg max-w-7xl">
+<!-- Header Section Duolingo/Moe style -->
+<header class="flex flex-col gap-space-md border-b-2 border-surface-container pb-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1.5 max-w-xl">
+
+<h1 class="font-display-hero text-display-hero text-on-surface tracking-tight font-extrabold flex items-center gap-3">
+        Community &amp; Discover 
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant font-semibold">
+        Authentic daily logs from builders, learners, and creators growing together!
+      </p>
+</div>
+<!-- Duolingo Moe Mascot Speech Bubble Card -->
+
+</div>
+<!-- Chunky Tactile Toggle Tabs -->
+<div class="flex items-center gap-3 pt-2"><div class="flex items-center justify-between w-full flex-wrap gap-3">
+  <div class="flex items-center gap-2.5">
+    <button class="relative px-5 py-2.5 rounded-2xl bg-[#58CC02] hover:bg-[#4EBA02] text-white font-extrabold text-body-md flex items-center gap-2 border-b-4 border-[#46A302] active:translate-y-0.5 active:border-b-2 shadow-sm transition-all" type="button">
+      <span class="">For You</span>
+    </button>
+    <button class="tactile-btn relative px-5 py-2.5 rounded-2xl bg-white hover:bg-surface-container text-on-surface font-headline-sm text-body-md font-extrabold flex items-center gap-2 border-2 border-[#E7E2D2] shadow-[0_4px_0_rgba(0,0,0,0.06)]" type="button">
+      <span class="">Following</span>
+      
+    </button>
+  </div>
+  <div class="flex items-center gap-2 flex-wrap">
+    
+    
+    
+  </div>
+</div></div>
+</header>
+<!-- Main Content Area: Feed + Sidebar -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-start">
+<!-- Primary Stream (Feed Cards) -->
+<section aria-label="Community Timeline" class="lg:col-span-8 flex flex-col gap-space-lg">
+<!-- Post 1: Programming & System Design -->
+<article class="bg-white rounded-2xl p-5 border border-surface-container-highest flex flex-col gap-4 shadow-sm hover:border-primary/30 transition-all"><div class="flex items-start justify-between gap-3"><div class="flex items-center gap-3 min-w-0"><div class="relative w-11 h-11 rounded-xl bg-emerald-100 border border-emerald-300 flex items-center justify-center text-primary font-bold text-lg flex-shrink-0">A<span class="absolute -bottom-1 -right-1 text-xs">💻</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-2"><span class="font-bold text-sm text-on-surface truncate">Ahmad Al-Mansoor</span><span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase">Builder</span></div><div class="flex items-center gap-1.5 flex-wrap mt-0.5"><span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant text-[11px] font-medium">Learn Flutter &amp; Dart</span><span class="text-on-surface-variant/40 text-[10px]">•</span><span class="text-[11px] text-on-surface-variant font-medium">3h ago</span></div></div></div><div class="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-amber-50 text-amber-800 border border-amber-200 text-xs font-bold flex-shrink-0"><span class="">🌟</span><span class="">Day 42 Streak!</span></div></div><div class="flex flex-col gap-3"><p class="text-sm text-on-surface leading-relaxed font-normal">Refactored our offline-first local database sync to SQLite via Drift today. Bypassed UI micro-stutters by moving serialization entirely to a separate background isolate! 🚀</p><div class="w-full h-52 rounded-xl overflow-hidden relative border border-surface-container-highest group"><img alt="Clean developer workstation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5xSrYUOr258EB_BzzMW0sAvmHVCXKg_707dASGe0CvUVXNN-a_Moea4O4vFkJIlBScKghZIUNHPUusCAahGkSttyuErPTd1x977HwV0tS3sSEJ50RSBDKstVsFJurIeLUx66wU9cgVOxV0fAVWUXPlzrLp5UzB0hUw25RgDkWl18R0cqyamz9bxbrcOc8_nc0YAqFAFojU6vSnoz0v5HnewYHJMEPk2QqhKrEeKI-b2GeAh0ZNGgw0w"><div class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-surface/90 backdrop-blur-md text-on-surface text-xs font-medium border border-surface-container-highest shadow-sm flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-primary-container"></span></div></div></div><div class="flex items-center justify-between pt-3 text-on-surface-variant border-t border-surface-container"><div class="flex items-center gap-1.5 flex-wrap"><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Cheers" type="button"><span class="">👏</span><span class="">28</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Grow" type="button"><span class="">🌱</span><span class="">14</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Insight" type="button"><span class="">💡</span><span class="">9</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Focus" type="button"><span class="">🎯</span><span class="">6</span></button></div><div class="flex items-center gap-2"><button class="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant text-xs font-medium transition-colors border border-surface-container-highest" type="button"><span class="material-symbols-outlined text-[16px]">chat_bubble</span><span class="">6 reflections</span></button><button class="p-1.5 rounded-xl hover:bg-surface-container transition-colors bookmark-btn text-on-surface-variant border border-transparent" title="Save entry" type="button"><span class="material-symbols-outlined text-[18px]">bookmark_border</span></button></div></div></article>
+<!-- Post 2: Fitness & Mindfulness with Image Context -->
+<article class="bg-white rounded-2xl p-5 border border-surface-container-highest flex flex-col gap-4 shadow-sm hover:border-primary/30 transition-all"><div class="flex items-start justify-between gap-3"><div class="flex items-center gap-3 min-w-0"><div class="relative w-11 h-11 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-800 font-bold text-lg flex-shrink-0">L<span class="absolute -bottom-1 -right-1 text-xs">🏃‍♀️</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-2"><span class="font-bold text-sm text-on-surface truncate">Layla Al-Khatib</span><span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[10px] font-bold uppercase">Runner</span></div><div class="flex items-center gap-1.5 flex-wrap mt-0.5"><span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant text-[11px] font-medium">Sub-40 10K Journey • 18d streak</span><span class="text-on-surface-variant/40 text-[10px]">•</span><span class="text-[11px] text-on-surface-variant font-medium">6h ago</span></div></div></div><div class="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold flex-shrink-0"><span class="">🔥</span><span class="">Day 88 Milestone!</span></div></div><div class="flex flex-col gap-3"><p class="text-sm text-on-surface leading-relaxed font-normal">Quiet morning sunrise track session: 6x1000m repeats at 3:55/km. Felt smooth on the knees; breath remained nasal through reps 1-4. The discipline of waking before sunrise transformed this journey from a chore into a restorative meditation. ✨</p><div class="w-full h-52 rounded-xl overflow-hidden relative border border-surface-container-highest group"><img alt="Running track at morning sunrise" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzcBs8znNEDKLqreGyZawLoyyAVanM7r2GWeymQgt6Qye27LGRFfe9z7D69v72F7JXL33zqeDTDZ9JNBRhq5eoWB_89PEQGV7NkE_Oqc6cVrdCmvSm3V4am-kUwllP4Ow-obtjHyTv-zqRQHN7OiEONH2LpDv1g0llpY27b_Fk53b0Kn7BOdJ5Vi_fg1exXzeF0K3JUcC12uSSrsbujoUOxopQh4d0Ux8ziZJbDSyRJabgYBPFN_Ds-Q"><div class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-surface/90 backdrop-blur-md text-on-surface text-xs font-medium border border-surface-container-highest shadow-sm flex items-center gap-1.5"></div></div></div><div class="flex items-center justify-between pt-3 text-on-surface-variant border-t border-surface-container"><div class="flex items-center gap-1.5 flex-wrap"><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Cheers" type="button"><span class="">👏</span><span class="">52</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Grow" type="button"><span class="">🌱</span><span class="">31</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Focus" type="button"><span class="">🎯</span><span class="">18</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Insight" type="button"><span class="">💡</span><span class="">7</span></button></div><div class="flex items-center gap-2"><button class="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant text-xs font-medium transition-colors border border-surface-container-highest" type="button"><span class="material-symbols-outlined text-[16px]">chat_bubble</span><span class="">11 reflections</span></button><button class="p-1.5 rounded-xl hover:bg-surface-container transition-colors bookmark-btn text-on-surface-variant border border-transparent" title="Save entry" type="button"><span class="material-symbols-outlined text-[18px]">bookmark_border</span></button></div></div></article>
+<!-- Post 3: Intellectual Notes / Deep Reading -->
+<article class="bg-white rounded-2xl p-5 border border-surface-container-highest flex flex-col gap-4 shadow-sm hover:border-primary/30 transition-all"><div class="flex items-start justify-between gap-3"><div class="flex items-center gap-3 min-w-0"><div class="relative w-11 h-11 rounded-xl bg-purple-100 border border-purple-300 flex items-center justify-center text-purple-800 font-bold text-lg flex-shrink-0">T<span class="absolute -bottom-1 -right-1 text-xs">📖</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-2"><span class="font-bold text-sm text-on-surface truncate">Tariq Bin Yousef</span><span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 text-[10px] font-bold uppercase">Scholar</span></div><div class="flex items-center gap-1.5 flex-wrap mt-0.5"><span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant text-[11px] font-medium">Classical Arabic Semantics • 31d streak</span><span class="text-on-surface-variant/40 text-[10px]">•</span><span class="text-[11px] text-on-surface-variant font-medium">9h ago</span></div></div></div><div class="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-cyan-50 text-cyan-800 border border-cyan-200 text-xs font-bold flex-shrink-0"><span class="">📚</span><span class="">Day 31 Read</span></div></div><div class="flex flex-col gap-3"><p class="text-sm text-on-surface leading-relaxed font-normal">Finished chapter 4 of Al-Jurjani's <span class="italic font-semibold">Dala'il al-I'jaz</span> (دلائل الإعجاز). Fascinating formulation of 'Nazm' (النظم): word order is not purely decorative syntax, but an exact mapping of mental conceptualization into speech.</p><div class="w-full h-52 rounded-xl overflow-hidden relative border border-surface-container-highest group"><div class="absolute bottom-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-surface/90 backdrop-blur-md text-on-surface text-xs font-medium border border-surface-container-highest shadow-sm flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-primary-container"></span></div></div></div><div class="flex items-center justify-between pt-3 text-on-surface-variant border-t border-surface-container"><div class="flex items-center gap-1.5 flex-wrap"><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Insight" type="button"><span class="">💡</span><span class="">34</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Grow" type="button"><span class="">🌱</span><span class="">19</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Cheers" type="button"><span class="">👏</span><span class="">16</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Focus" type="button"><span class="">🎯</span><span class="">11</span></button></div><div class="flex items-center gap-2"><button class="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant text-xs font-medium transition-colors border border-surface-container-highest" type="button"><span class="material-symbols-outlined text-[16px]">chat_bubble</span><span class="">8 reflections</span></button><button class="p-1.5 rounded-xl hover:bg-surface-container transition-colors bookmark-btn text-on-surface-variant border border-transparent" title="Save entry" type="button"><span class="material-symbols-outlined text-[18px]">bookmark_border</span></button></div></div></article>
+<!-- Post 4: Counter Progress / Goal Tracker -->
+<article class="bg-white rounded-2xl p-5 border border-surface-container-highest flex flex-col gap-4 shadow-sm hover:border-primary/30 transition-all"><div class="flex items-start justify-between gap-3"><div class="flex items-center gap-3 min-w-0"><div class="relative w-11 h-11 rounded-xl bg-rose-100 border border-rose-300 flex items-center justify-center text-rose-700 font-bold text-lg flex-shrink-0">N<span class="absolute -bottom-1 -right-1 text-xs">📞</span></div><div class="flex flex-col min-w-0"><div class="flex items-center gap-2"><span class="font-bold text-sm text-on-surface truncate">Nour Al-Sabah</span><span class="px-2 py-0.5 rounded-full bg-blue-100 text-blue-800 text-[10px] font-bold uppercase">Founder</span></div><div class="flex items-center gap-1.5 flex-wrap mt-0.5"><span class="px-2 py-0.5 rounded-md bg-surface-container text-on-surface-variant text-[11px] font-medium">Founder Outreach • Target: 50 B2B Calls</span><span class="text-on-surface-variant/40 text-[10px]">•</span><span class="text-[11px] text-on-surface-variant font-medium">1h ago</span></div></div></div><div class="flex items-center gap-1.5 px-3 py-1 rounded-xl bg-secondary-container text-on-secondary-container border border-secondary-fixed-dim text-xs font-bold flex-shrink-0"><span class="">🎯</span><span class="">32 / 50 Calls</span></div></div><div class="flex flex-col gap-3"><p class="text-sm text-on-surface leading-relaxed font-normal">Attempt #32 logged today: pitch with an enterprise logistics operator in Riyadh. Not an everyday routine, but a deliberate repetition towards the target. 4 customer discovery insights collected on custom fleet dispatching.</p><div class="w-full h-52 rounded-xl overflow-hidden relative border border-surface-container-highest group"><img alt="Desk with metrics tablet" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVduEezIGd6F2A2M0HEefZdKI1Z-pGXdSmbh0bOQHEgNWbkUlVvgiX5ObK4lZJjUXfdkTvBRe_inlX6CxHHn7JUFE_UVxuGyB-N0hq7Rosr1vkhc6W26VXfcM0eEWlHKnwNd8bS-bxf4w_0qiuXGRVRATpXJ5h0p1YVUTNk_9KMDZnRGhrJ4lCLD8x9RX6rsskv1HLl5y9FzxwePcAsgqYTCe34sOVwG9gw_-_mtb8A75NhXQ5woOfSA"></div><div class="p-3.5 bg-surface-container-low rounded-xl border border-surface-container-highest flex flex-col gap-2"><div class="flex items-center justify-between text-xs font-medium"><span class="text-on-surface-variant font-semibold flex items-center gap-1.5"><span class="">🚀</span> Custom Target (محاولات مستهدفة)</span><span class="font-bold text-primary bg-primary-fixed/50 px-2 py-0.5 rounded-full border border-primary/20">64% Completed 🎉</span></div><div class="w-full h-2.5 bg-surface-container-high rounded-full overflow-hidden"><div class="h-full bg-primary-container rounded-full" style="width: 64%;"></div></div></div></div><div class="flex items-center justify-between pt-3 text-on-surface-variant border-t border-surface-container"><div class="flex items-center gap-1.5 flex-wrap"><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Cheers" type="button"><span class="">👏</span><span class="">19</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Focus" type="button"><span class="">🎯</span><span class="">15</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Grow" type="button"><span class="">🌱</span><span class="">12</span></button><button class="flex items-center gap-1 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface border border-surface-container-highest text-xs font-semibold transition-colors" title="Insight" type="button"><span class="">💡</span><span class="">8</span></button></div><div class="flex items-center gap-2"><button class="flex items-center gap-1.5 px-2.5 py-1 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant text-xs font-medium transition-colors border border-surface-container-highest" type="button"><span class="material-symbols-outlined text-[16px]">chat_bubble</span><span class="">4 reflections</span></button><button class="p-1.5 rounded-xl hover:bg-surface-container transition-colors bookmark-btn text-on-surface-variant border border-transparent" title="Save entry" type="button"><span class="material-symbols-outlined text-[18px]">bookmark_border</span></button></div></div></article>
+<div class="flex flex-col items-center justify-center py-space-lg text-on-surface-variant gap-2 bg-surface-container-low rounded-3xl border-2 border-dashed border-surface-container-highest">
+<span class="text-3xl">🎉</span>
+<span class="font-label-chunky text-body-md font-bold text-on-surface">You're completely caught up!</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Keep your quiet momentum and hydrate today. 💧</span>
+</div>
+</section>
+<!-- Discover Right Sidebar (Moe / Duolingo Gamified Style) -->
+<aside aria-label="Community Highlights &amp; Leaderboards" class="lg:col-span-4 flex flex-col gap-5 sticky top-24">
+  <!-- Daily Community Challenge / Habit Coach Card -->
+  <div class="bg-white rounded-2xl p-5 border-2 border-[#E7E2D2] border-b-4 flex flex-col gap-3 shadow-sm">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl">⚡</span>
+        <h3 class="font-extrabold text-[15px] text-on-surface leading-tight">Daily Tribe Challenge</h3>
+      </div>
+      <span class="px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 text-[11px] font-black border border-amber-300">14h left</span>
+    </div>
+    <p class="text-xs text-on-surface-variant font-medium leading-relaxed">
+      Log any uninterrupted 25-minute deep focus or morning routine session before 8:00 PM!
+    </p>
+    <div class="p-3 bg-surface-container-low rounded-xl border border-surface-container-highest flex flex-col gap-2">
+      <div class="flex items-center justify-between text-xs font-bold">
+        <span class="text-on-surface-variant flex items-center gap-1.5">
+          <span class="w-2 h-2 rounded-full bg-[#58CC02]"></span> 4,820 / 6,000 Builders
+        </span>
+        <span class="text-[#2b6c00]">80%</span>
+      </div>
+      <div class="w-full h-2.5 bg-surface-container-high rounded-full overflow-hidden">
+        <div class="h-full bg-[#58CC02] rounded-full" style="width: 80%;"></div>
+      </div>
+    </div>
+    <button class="w-full py-2.5 rounded-xl bg-[#58CC02] hover:bg-[#4EBA02] text-white font-extrabold text-xs border-b-4 border-[#3D8F01] active:translate-y-0.5 active:border-b-2 transition-all flex items-center justify-center gap-1.5" type="button">
+      <span class="material-symbols-outlined text-[16px]">flag</span>
+      <span class="">Join Today's Goal (+40 XP)</span>
+    </button>
+  </div>
+
+  <!-- Top Streakers / Hall of Fame -->
+  <div class="bg-white rounded-2xl p-5 border-2 border-[#E7E2D2] border-b-4 flex flex-col gap-4 shadow-sm">
+    <div class="flex items-center justify-between border-b border-surface-container pb-3">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🏆</span>
+        <h3 class="font-extrabold text-[15px] text-on-surface leading-tight">Hall of Fame</h3>
+      </div>
+      <a href="#" class="text-xs font-bold text-[#2b6c00] hover:underline">View All</a>
+    </div>
+
+    <div class="flex flex-col gap-3">
+      <!-- Streaker 1 -->
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-amber-100 border border-amber-300 flex items-center justify-center font-bold text-amber-800 text-sm flex-shrink-0">
+            🥇
+          </div>
+          <div class="flex flex-col min-w-0">
+            <div class="flex items-center gap-1">
+              <span class="font-extrabold text-xs text-on-surface truncate">Ziyad Al-Farisi</span>
+              <span class="text-[10px]">🇸🇦</span>
+            </div>
+            <span class="text-[11px] font-bold text-[#2b6c00]">🔥 240 Day Streak</span>
+          </div>
+        </div>
+        <button class="follow-btn px-3 py-1 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-extrabold text-xs border border-surface-container-highest transition-all" type="button" data-following="false">
+          Follow
+        </button>
+      </div>
+
+      <!-- Streaker 2 -->
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-slate-100 border border-slate-300 flex items-center justify-center font-bold text-slate-700 text-sm flex-shrink-0">
+            🥈
+          </div>
+          <div class="flex flex-col min-w-0">
+            <div class="flex items-center gap-1">
+              <span class="font-extrabold text-xs text-on-surface truncate">Sarah Mansoor</span>
+              <span class="text-[10px]">🇦🇪</span>
+            </div>
+            <span class="text-[11px] font-bold text-[#2b6c00]">🔥 196 Day Streak</span>
+          </div>
+        </div>
+        <button class="follow-btn px-3 py-1 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-extrabold text-xs border border-surface-container-highest transition-all" type="button" data-following="false">
+          Follow
+        </button>
+      </div>
+
+      <!-- Streaker 3 -->
+      <div class="flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-amber-50 border border-amber-200 flex items-center justify-center font-bold text-amber-700 text-sm flex-shrink-0">
+            🥉
+          </div>
+          <div class="flex flex-col min-w-0">
+            <div class="flex items-center gap-1">
+              <span class="font-extrabold text-xs text-on-surface truncate">Omar Khalid</span>
+              <span class="text-[10px]">🇶🇦</span>
+            </div>
+            <span class="text-[11px] font-bold text-[#2b6c00]">🔥 142 Day Streak</span>
+          </div>
+        </div>
+        <button class="follow-btn px-3 py-1 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-extrabold text-xs border border-surface-container-highest transition-all" type="button" data-following="false">
+          Follow
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Trending Circles & Topics -->
+  <div class="bg-white rounded-2xl p-5 border-2 border-[#E7E2D2] border-b-4 flex flex-col gap-3.5 shadow-sm">
+    <div class="flex items-center justify-between border-b border-surface-container pb-2.5">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🏷️</span>
+        <h3 class="font-extrabold text-[15px] text-on-surface leading-tight">Trending Circles</h3>
+      </div>
+      <span class="text-[11px] font-bold text-outline">Weekly</span>
+    </div>
+
+    <div class="flex flex-wrap gap-2">
+      <a href="#" class="px-3 py-1.5 rounded-xl bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-200 text-xs font-bold transition-colors flex items-center gap-1.5">
+        <span class="">#FlutterDev</span>
+        <span class="text-[10px] px-1.5 py-0.2 rounded-full bg-emerald-100 text-emerald-800">1.2k</span>
+      </a>
+      <a href="#" class="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 text-xs font-bold transition-colors flex items-center gap-1.5">
+        <span class="">#SunriseRun</span>
+        <span class="text-[10px] px-1.5 py-0.2 rounded-full bg-amber-100 text-amber-800">980</span>
+      </a>
+      <a href="#" class="px-3 py-1.5 rounded-xl bg-purple-50 hover:bg-purple-100 text-purple-800 border border-purple-200 text-xs font-bold transition-colors flex items-center gap-1.5">
+        <span class="">#ArabicSyntax</span>
+        <span class="text-[10px] px-1.5 py-0.2 rounded-full bg-purple-100 text-purple-800">640</span>
+      </a>
+      <a href="#" class="px-3 py-1.5 rounded-xl bg-blue-50 hover:bg-blue-100 text-blue-800 border border-blue-200 text-xs font-bold transition-colors flex items-center gap-1.5">
+        <span class="">#B2BSalesSprint</span>
+        <span class="text-[10px] px-1.5 py-0.2 rounded-full bg-blue-100 text-blue-800">510</span>
+      </a>
+      <a href="#" class="px-3 py-1.5 rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface-variant border border-surface-container-highest text-xs font-bold transition-colors flex items-center gap-1.5">
+        <span class="">#FajrRoutine</span>
+        <span class="text-[10px] px-1.5 py-0.2 rounded-full bg-surface-container text-on-surface-variant">840</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Quick Community Stats & Motivation Footer -->
+  <div class="bg-[#FAF8F0] rounded-2xl p-4 border border-[#E7E2D2] flex items-center justify-between text-xs text-on-surface-variant font-medium">
+    <div class="flex items-center gap-2">
+      <span class="text-lg">🌿</span>
+      <span class=""><strong>24,310</strong> logs shared this week</span>
+    </div>
+    <span class="font-black text-[#2b6c00]">+18%</span>
+  </div>
+</aside>
+</div>
+</div>
+</div>
+<script>
+  // Simple UI Interactions for Filter Pills
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => {
+        b.classList.remove('bg-primary-container', 'text-on-primary', 'shadow-sm');
+        b.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      btn.classList.add('bg-primary-container', 'text-on-primary', 'shadow-sm');
+      btn.classList.remove('bg-surface-container', 'text-on-surface-variant');
+    });
+  });
+
+  // Bookmark Micro-Interaction
+  const bookmarkButtons = document.querySelectorAll('.bookmark-btn');
+  bookmarkButtons.forEach(btn => {
+    let saved = false;
+    const icon = btn.querySelector('.material-symbols-outlined');
+    btn.addEventListener('click', () => {
+      saved = !saved;
+      if (saved) {
+        btn.classList.add('text-primary');
+        icon.textContent = 'bookmark';
+        icon.style.fontVariationSettings = "'FILL' 1";
+      } else {
+        btn.classList.remove('text-primary');
+        icon.textContent = 'bookmark_border';
+        icon.style.fontVariationSettings = "'FILL' 0";
+      }
+    });
+  });
+
+  // Follow Button Toggle with Tactile Bounce
+  const followButtons = document.querySelectorAll('.follow-btn');
+  followButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isFollowing = btn.getAttribute('data-following') === 'true';
+      if (!isFollowing) {
+        btn.setAttribute('data-following', 'true');
+        btn.textContent = 'Following ✨';
+        btn.classList.add('bg-primary-container', 'text-on-primary', 'border-primary');
+        btn.classList.remove('bg-surface-container', 'text-on-surface');
+      } else {
+        btn.setAttribute('data-following', 'false');
+        btn.textContent = 'Follow';
+        btn.classList.remove('bg-primary-container', 'text-on-primary', 'border-primary');
+        btn.classList.add('bg-surface-container', 'text-on-surface');
+      }
+    });
+  });
+</script></main></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body></html>

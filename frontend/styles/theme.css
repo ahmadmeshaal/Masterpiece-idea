@@ -1,0 +1,52 @@
+/* Shared colors, text styles, and basic controls for the project. */
+:root {
+  --color-page: #fbf9f1;
+  --color-card: #ffffff;
+  --color-soft: #faf8f0;
+  --color-soft-hover: #f2ede0;
+  --color-border: #e7e2d2;
+  --color-text: #1b1c17;
+  --color-muted: #5f6d56;
+  --color-green: #58cc02;
+  --color-green-dark: #3d8f01;
+  --color-green-text: #2b6c00;
+  --color-yellow: #ffdf92;
+  --color-yellow-text: #755b00;
+  --color-red: #ff4b4b;
+  --font-main: "Plus Jakarta Sans", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  background: var(--color-page);
+  font-family: var(--font-main);
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.icon {
+  font-family: "Material Symbols Outlined";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+

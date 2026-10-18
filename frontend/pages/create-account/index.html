@@ -1,0 +1,59 @@
+<!DOCTYPE html><html dir="ltr" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="web_blank" name="shell-type">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#58cc02',
+              hover: '#4eb302',
+              dark: '#46a302',
+              light: '#f2fbe8'
+            },
+            surface: {
+              cream: '#FCF9F2',
+              warm: '#FAF8F5',
+              card: '#FFFFFF',
+              border: '#ECE6D9',
+              'border-subtle': '#E7E2D2'
+            }
+          },
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<title>Create Account | Taqaddomi</title><link rel="stylesheet" href="../../styles/buttons.css">
+</head>
+<body class="bg-[#FAF8F5] text-stone-800 min-h-screen flex flex-col justify-between selection:bg-[#58cc02]/20 selection:text-stone-900">
+<!-- Header -->
+<div id="public-navbar" data-page="create-account"></div><script src="../../components/public-navbar.js"></script>
+<!-- Main Content -->
+<main class="auth-page-signup flex flex-col items-center justify-center w-full">
+<div class="auth-card-wrap"><div class="w-full"><div class="auth-card bg-white rounded-3xl border border-[#ECE6D9] shadow-[0_4px_24px_rgba(0,0,0,0.03)]"><div class="auth-card-heading text-center mb-6"><h1 class="text-2xl sm:text-3xl font-extrabold text-stone-900 tracking-tight">Create an account</h1><p class="text-sm sm:text-base text-stone-500 font-medium mt-1.5">Start building daily habits that stick.</p></div><button class="tactile-button-white w-full py-3 px-4 rounded-2xl bg-white border border-[#ECE6D9] hover:bg-[#FAF8F5] text-stone-700 font-semibold text-sm flex items-center justify-center gap-2.5 shadow-xs transition-all active:translate-y-0.5 cursor-pointer focus:outline-none" type="button"><svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"></path><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"></path><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"></path><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"></path></svg><span class="text-sm font-medium text-gray-700 group-hover:text-gray-900">Continue with Google</span></button><div class="auth-divider relative flex items-center justify-center my-5"><div class="w-full h-[1px] bg-[#ECE6D9]"></div><span class="absolute bg-white px-3 text-xs font-medium text-stone-400">or continue with email</span></div><form class="auth-signup-form flex flex-col gap-4" id="signup-form" onsubmit="event.preventDefault(); window.handleSignupSubmit();"><div><label class="text-xs font-bold text-stone-700 mb-1.5" for="full-name">Full Name</label><div class="auth-field relative flex items-center"><span class="material-symbols-outlined absolute left-3.5 text-stone-400 text-[20px] pointer-events-none">person</span><input class="w-full pl-11 pr-4 py-3 rounded-xl bg-[#FCF9F2] border-0 auth-input text-stone-800 placeholder:text-stone-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#58cc02]/20 font-medium text-sm transition-all" id="full-name" name="name" placeholder="Alex Morgan" required="" type="text"></div></div><div><label class="text-xs font-bold text-stone-700 mb-1.5" for="email">Email address</label><div class="auth-field relative flex items-center"><span class="material-symbols-outlined absolute left-3.5 text-stone-400 text-[20px] pointer-events-none">mail</span><input class="w-full pl-11 pr-4 py-3 rounded-xl bg-[#FCF9F2] border-0 auth-input text-stone-800 placeholder:text-stone-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#58cc02]/20 font-medium text-sm transition-all" id="email" name="email" placeholder="name@example.com" required="" type="email"></div></div><div><label class="text-xs font-bold text-stone-700 mb-1.5" for="password">Password</label><div class="auth-field relative flex items-center"><span class="material-symbols-outlined absolute left-3.5 text-stone-400 text-[20px] pointer-events-none">lock</span><input class="w-full pl-11 pr-11 py-3 rounded-xl bg-[#FCF9F2] border-0 auth-input text-stone-800 placeholder:text-stone-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#58cc02]/20 font-medium text-sm transition-all" id="password" name="password" placeholder="At least 8 characters" required="" type="password"><button aria-label="Toggle password visibility" class="absolute right-3.5 text-gray-400 hover:text-gray-700 transition-colors cursor-pointer flex items-center justify-center p-1 focus:outline-none password-toggle" id="toggle-password" type="button"><span class="material-symbols-outlined text-[20px]" id="password-icon">visibility</span></button></div></div><div><label class="text-xs font-bold text-stone-700 mb-1.5" for="confirm-password">Confirm Password</label><div class="auth-field relative flex items-center"><span class="material-symbols-outlined absolute left-3.5 text-stone-400 text-[20px] pointer-events-none">lock</span><input class="w-full pl-11 pr-11 py-3 rounded-xl bg-[#FCF9F2] border-0 auth-input text-stone-800 placeholder:text-stone-400 focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#58cc02]/20 font-medium text-sm transition-all" id="confirm-password" name="confirm_password" placeholder="Re-enter your password" required="" type="password"><button aria-label="Toggle password visibility" class="absolute right-3.5 text-gray-400 hover:text-gray-700 transition-colors cursor-pointer flex items-center justify-center p-1 focus:outline-none password-toggle" id="toggle-confirm-password" type="button"><span class="material-symbols-outlined text-[20px]" id="confirm-password-icon">visibility</span></button></div></div><div class="flex items-center justify-between pt-1"><label class="flex items-center gap-2.5 cursor-pointer select-none"><input checked="" class="w-5 h-5 rounded-md text-[#58cc02] bg-[#F6F3EC] border-[#ECE6D9] accent-[#58cc02] focus:ring-0 focus:outline-none cursor-pointer" id="terms-agree" required="" type="checkbox"><span class="text-sm font-medium text-stone-600">I agree to the <a class="text-stone-800 underline font-medium hover:text-[#46a302]" href="#">Terms of Service</a> &amp; <a class="text-stone-800 underline font-medium hover:text-[#46a302]" href="#">Privacy Policy</a></span></label></div><div class="pt-2"><button class="btn-tactile-green w-full flex items-center justify-center gap-2 py-3.5 px-6 font-bold text-base tracking-wide cursor-pointer focus:outline-none" id="submit-cta" type="submit"><span class="">Create Account</span><span class="material-symbols-outlined text-[20px] font-bold">arrow_forward</span></button></div></form><div class="hidden mt-4 p-3.5 rounded-2xl bg-[#58cc02]/15 border border-[#58cc02]/30 text-stone-800 flex items-center gap-3 shadow-xs" id="signup-success-banner"><span class="material-symbols-outlined text-[#58cc02] text-[24px]">verified</span><div><p class="font-bold text-stone-900 text-sm">Account created successfully! 🎉</p><p class="text-xs text-stone-600">Redirecting to your habit dashboard...</p></div></div><div class="mt-8 text-center pt-2"><p class="text-sm text-stone-500">Already have an account? <a class="font-semibold text-[#46a302] hover:text-[#58cc02] transition-colors ml-1" data-path="login" href="../login/index.html">Log in</a></p></div></div><div class="flex items-center justify-center gap-6 mt-6 text-gray-500 text-sm"><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-[#58cc02]">verified_user</span><span class="">SSL Encrypted</span></div><span class="">•</span><div class="flex items-center gap-1.5"><span class="material-symbols-outlined text-[18px] text-[#58cc02]">sync</span><span class="">Syncs Across Devices</span></div></div></div></div>
+<!-- Scripts -->
+<script src="script.js"></script>
+</main>
+<!-- Footer -->
+
+
+
+
+
+</body></html>
+
+
+
+

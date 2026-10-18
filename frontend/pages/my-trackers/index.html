@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Trackers | Taqaddomi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/theme.css">
+  <link rel="stylesheet" href="../../styles/components.css">
+  <link rel="stylesheet" href="../../styles/buttons.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../../components/add-entry-card.css">
+</head>
+<body>
+  <div id="app-sidebar" data-active-page="my-trackers"></div>
+  <div class="main-area">
+    <div id="app-header"></div>
+    <main class="trackers-page">
+      <div class="trackers-content">
+        <div class="trackers-heading">
+          <div>
+            <h1>My Trackers</h1>
+            <p>Keep track of your habits, routines, and streaks.</p>
+          </div>
+          <button class="btn-tactile-green create-tracker-button" id="open-tracker-form" type="button">
+            <span class="icon">add</span>
+            <span>Create New Tracker</span>
+          </button>
+        </div>
+
+        <section class="tracker-filters" aria-label="Filter trackers">
+          <div class="filter-tabs" role="group" aria-label="Tracker status">
+            <button class="filter-tab is-active" type="button" data-filter="all" aria-pressed="true">All <span id="count-all">0</span></button>
+            <button class="filter-tab" type="button" data-filter="active" aria-pressed="false">Active <span id="count-active">0</span></button>
+            <button class="filter-tab" type="button" data-filter="completed" aria-pressed="false">Completed <span id="count-completed">0</span></button>
+          </div>
+        </section>
+
+        <section class="tracker-stats" aria-label="Tracker statistics">
+          <article class="stat-card"><div class="stat-label"><span>Total Trackers</span><span class="stat-icon green icon">track_changes</span></div><div class="stat-value" id="stat-total">0</div></article>
+          <article class="stat-card"><div class="stat-label"><span>Active Trackers</span><span class="stat-icon green icon">trending_up</span></div><div class="stat-value green-text" id="stat-active">0</div></article>
+          <article class="stat-card"><div class="stat-label"><span>Completed</span><span class="stat-icon yellow icon">check_circle</span></div><div class="stat-value yellow-text" id="stat-completed">0</div></article>
+          <article class="stat-card"><div class="stat-label"><span>Entries Logged</span><span class="stat-icon yellow icon">edit_note</span></div><div class="stat-value" id="stat-entries">0</div></article>
+        </section>
+
+        <section class="empty-state" id="empty-state" aria-labelledby="empty-title">
+          <div class="empty-icon"><span class="icon">track_changes</span></div>
+          <h2 id="empty-title">No trackers yet</h2>
+          <p>Create your first tracker and start building a habit that sticks.</p>
+        </section>
+
+        <section class="no-results" id="no-results" hidden>
+          <h2 id="no-results-title">No trackers in this filter</h2>
+          <p>Try another status filter to see your trackers.</p>
+          <button class="btn-tactile-white" id="show-all-trackers" type="button">Show all trackers</button>
+        </section>
+
+        <section class="tracker-grid" id="tracker-grid" aria-label="Your trackers" hidden></section>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="tracker-dialog" id="tracker-dialog" aria-labelledby="dialog-title">
+    <form class="tracker-form" id="tracker-form">
+      <section class="tracker-form-card">
+        <header class="tracker-form-heading">
+          <div class="tracker-form-title-row">
+            <span class="tracker-form-rocket icon">rocket_launch</span>
+            <div><h2 id="dialog-title">Create Tracker</h2><p>Choose your goal, set your vibe, and start building unstoppable momentum today.</p></div>
+          </div>
+          <button class="dialog-close" id="close-tracker-form" type="button" aria-label="Close">×</button>
+        </header>
+
+        <div class="tracker-field">
+          <div class="field-label-row"><label for="tracker-name">Tracker Title <span>*</span></label><small id="title-count">0 / 80</small></div>
+          <input id="tracker-name" name="name" type="text" maxlength="80" placeholder="e.g. Daily reading" required>
+        </div>
+
+        <fieldset class="tracker-field category-field">
+          <legend>Category <span>*</span></legend>
+          <div class="category-options" id="category-options">
+            <button class="choice-chip is-selected" type="button" data-category="Programming">💻 <span>Programming</span></button>
+            <button class="choice-chip" type="button" data-category="Fitness">🏃 <span>Fitness</span></button>
+            <button class="choice-chip" type="button" data-category="Languages">🗣️ <span>Languages</span></button>
+            <button class="choice-chip" type="button" data-category="Reading">📚 <span>Reading</span></button>
+            <button class="choice-chip" type="button" data-category="Habits">🌱 <span>Habits</span></button>
+            <button class="choice-chip" type="button" data-category="Creative">🎨 <span>Creative</span></button>
+          </div>
+          <input id="tracker-category" name="category" type="hidden" value="Programming">
+        </fieldset>
+
+        <fieldset class="tracker-field">
+          <legend>Tracking Format <span>*</span></legend>
+          <div class="format-options">
+            <button class="format-card is-selected" type="button" data-format="Daily">
+              <span class="format-card-top"><span class="format-emoji">🔥</span><span class="format-title">Daily Rhythm<small>Streak Mode</small></span><span class="format-check icon">check</span></span>
+              <span class="format-description">Log progress every day and celebrate your streak.</span>
+            </button>
+            <button class="format-card" type="button" data-format="Flexible">
+              <span class="format-card-top"><span class="format-emoji">⚡</span><span class="format-title">Flexible Cadence<small>Custom Target</small></span><span class="format-check icon"></span></span>
+              <span class="format-description">For habits, sessions, or milestones on your own schedule.</span>
+            </button>
+          </div>
+          <input id="tracker-format" name="format" type="hidden" value="Daily">
+          <div class="counter-options" id="counter-options" hidden>
+            <span>Counter unit</span>
+            <select name="counterUnit"><option>Session</option><option>Attempt</option><option>Update</option></select>
+          </div>
+        </fieldset>
+
+        <fieldset class="tracker-field">
+          <legend>Privacy <span>*</span></legend>
+          <div class="format-options privacy-options">
+            <button class="format-card" type="button" data-privacy="Public"><span class="format-card-top"><span class="format-emoji">🌐</span><span class="format-title">Public<small>Shared in Community Feed</small></span><span class="format-check icon"></span></span></button>
+            <button class="format-card is-selected" type="button" data-privacy="Private"><span class="format-card-top"><span class="format-emoji">🔒</span><span class="format-title">Private<small>Only visible to you</small></span><span class="format-check icon">check</span></span></button>
+          </div>
+          <input id="tracker-privacy" name="privacy" type="hidden" value="Private">
+        </fieldset>
+
+        <details class="additional-options">
+          <summary><span>✨</span> Additional options</summary>
+          <label for="tracker-intention">Intention</label>
+          <textarea id="tracker-intention" name="intention" rows="2" placeholder="What motivates you?"></textarea>
+          <div class="date-options"><label>Start date<input name="startDate" type="date"></label><label>Target date<input name="targetDate" type="date"></label></div>
+          <div class="tracker-upload-field">
+            <label for="tracker-picture">Tracker Picture</label>
+            <div class="tracker-upload-zone" id="tracker-upload-zone">
+              <input id="tracker-picture" name="picture" type="file" accept="image/png,image/jpeg" aria-label="Upload tracker picture">
+              <div class="upload-placeholder" id="upload-placeholder">
+                <span class="upload-image-icon">🖼️</span>
+                <span><strong>Upload cute tracker badge or photo</strong><small>PNG or JPG up to 5MB • Make it uniquely yours!</small></span>
+              </div>
+              <img class="upload-preview" id="upload-preview" alt="Selected tracker preview" hidden>
+              <span class="upload-change-label" id="upload-change-label" hidden>Click to change photo</span>
+            </div>
+            <p class="upload-error" id="upload-error" role="alert" hidden></p>
+          </div>
+        </details>
+
+        <footer class="tracker-form-actions">
+          <button class="btn-tactile-white" id="cancel-tracker-form" type="button">Cancel</button>
+          <button class="btn-tactile-green" type="submit">Create Tracker <span class="icon">rocket_launch</span></button>
+        </footer>
+      </section>
+    </form>
+  </dialog>
+
+  <dialog class="entry-dialog" id="entry-dialog" aria-labelledby="entry-title">
+    <form id="entry-form">
+      <section class="entry-card">
+        <div class="card-heading">
+          <div class="heading-icon icon">edit_note</div>
+          <div><h1 id="entry-title">Add Entry</h1><p>Track your daily streak, log milestones &amp; build unstoppable momentum today.</p></div>
+          <button class="close-button" id="close-entry-dialog" type="button" aria-label="Close"><span class="icon">close</span></button>
+        </div>
+
+        <div class="field-group tracker-field">
+          <label for="entry-tracker-toggle">Select Tracker <span class="required">*</span></label>
+          <div class="tracker-picker">
+            <button class="tracker-toggle" id="entry-tracker-toggle" type="button" aria-expanded="false">
+              <span class="tracker-dot"></span><span id="entry-tracker-label"></span><span class="icon">expand_more</span>
+            </button>
+            <span class="day-badge"><span class="icon">bolt</span><span id="entry-day"></span></span>
+            <div class="tracker-menu" id="entry-tracker-menu" hidden></div>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="entry-notes">Description <span class="required">*</span></label>
+          <textarea id="entry-notes" rows="5" placeholder="What did you work on today?" required></textarea>
+          <div class="text-tools"><button class="polish-button" id="polish-entry" type="button"><span class="icon">auto_fix_high</span>Polish draft</button><span>Share a little progress today</span></div>
+        </div>
+
+        <div class="attachments">
+          <div class="attachment-buttons">
+            <button type="button" data-attachment="image"><span class="icon photo-icon">photo_camera</span>Photo</button>
+            <button type="button" data-attachment="video"><span class="icon video-icon">videocam</span>Video</button>
+            <button type="button" data-attachment="link"><span class="icon">link</span>Link</button>
+            <input id="entry-photo-input" type="file" accept="image/*" hidden>
+            <input id="entry-video-input" type="file" accept="video/*" hidden>
+          </div>
+          <div class="entry-attachment-list" id="entry-attachment-list"></div>
+        </div>
+
+        <div class="community-option">
+          <span class="community-icon icon">public</span><span class="community-label">Publish to community feed</span>
+          <label class="switch"><input id="entry-community-toggle" type="checkbox" checked><span class="switch-track"></span></label>
+        </div>
+
+        <footer class="form-actions"><button class="cancel-button tactile-button-white" id="cancel-entry-dialog" type="button">Cancel</button><button class="btn-tactile-green save-button" type="submit">Save &amp; Celebrate!</button></footer>
+      </section>
+    </form>
+  </dialog>
+
+  <dialog class="confirm-dialog" id="delete-dialog" aria-labelledby="delete-dialog-title" aria-describedby="delete-dialog-message">
+    <div class="confirm-dialog-card">
+      <div class="confirm-dialog-icon icon">delete</div>
+      <h2 id="delete-dialog-title">Delete tracker?</h2>
+      <p id="delete-dialog-message">This will delete the tracker and its saved entries.</p>
+      <div class="confirm-dialog-actions">
+        <button class="btn-tactile-white" id="cancel-delete" type="button">Cancel</button>
+        <button class="btn-tactile-danger" id="confirm-delete" type="button">Delete</button>
+      </div>
+    </div>
+  </dialog>
+
+  <script src="../../components/app-shell.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

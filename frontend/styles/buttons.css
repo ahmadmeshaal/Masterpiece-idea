@@ -1,0 +1,189 @@
+/* Shared tactile button styles for every page. */
+button {
+  transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1),
+    border-color 0.12s ease, box-shadow 0.12s ease, background-color 0.12s ease;
+}
+
+button:active {
+  transform: translateY(3px);
+  border-bottom-color: transparent;
+}
+
+.primary-button,
+.tactile-button-green,
+.btn-tactile-green {
+  background-color: #58cc02;
+  color: #fff;
+  border: 2px solid #3fa002;
+  border-bottom: 5px solid #368202;
+  box-shadow: 0 4px 12px rgba(88, 204, 2, 0.25);
+  transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.primary-button:hover,
+.tactile-button-green:hover,
+.btn-tactile-green:hover {
+  background-color: #61de02;
+  transform: translateY(-1px);
+}
+
+.primary-button:active,
+.tactile-button-green:active,
+.btn-tactile-green:active {
+  transform: translateY(4px);
+  border-bottom-color: transparent;
+  box-shadow: 0 1px 4px rgba(88, 204, 2, 0.15);
+}
+
+.tactile-button-white,
+.btn-tactile-white {
+  background-color: #fff;
+  color: #2b2b24;
+  border: 2px solid #e5dfd0;
+  border-bottom: 5px solid #d5cdbd;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+  transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tactile-button-white:hover,
+.btn-tactile-white:hover {
+  background-color: #faf7f0;
+  transform: translateY(-1px);
+}
+
+.tactile-button-white:active,
+.btn-tactile-white:active {
+  transform: translateY(4px);
+  border-bottom-color: transparent;
+}
+
+.btn-tactile-danger {
+  background-color: #e34b4b;
+  color: #fff;
+  border: 2px solid #c93838;
+  border-bottom: 5px solid #a92b2b;
+  box-shadow: 0 4px 10px rgba(227, 75, 75, 0.2);
+  transition: all 0.12s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-tactile-danger:hover { background-color: #ed5959; transform: translateY(-1px); }
+.btn-tactile-danger:active { transform: translateY(4px); border-bottom-color: transparent; }
+
+.tactile-button-orange,
+.btn-tactile-orange {
+  background-color: #ff9600;
+  color: #fff;
+  border: 2px solid #e07e00;
+  border-bottom: 5px solid #be6300;
+  box-shadow: 0 4px 12px rgba(255, 150, 0, 0.25);
+  transition: all 0.12s ease;
+}
+
+.tactile-button-orange:hover,
+.btn-tactile-orange:hover {
+  background-color: #ffa41c;
+  transform: translateY(-1px);
+}
+
+.tactile-button-orange:active,
+.btn-tactile-orange:active {
+  transform: translateY(4px);
+  border-bottom-color: transparent;
+}
+
+/* Keep the blue browser focus box off form fields on every page. */
+input:focus,
+input:focus-visible,
+textarea:focus,
+textarea:focus-visible,
+select:focus,
+select:focus-visible {
+  outline: none !important;
+}
+
+.password-toggle:active {
+  transform: translateY(2px) scale(0.92);
+}
+
+
+/* Same rounded shape for form fields on every auth page. */
+.auth-input {
+  border-radius: 12px !important;
+}
+
+
+/* Shared sizing and spacing for login and signup cards. */
+.auth-card-wrap {
+  width: 100%;
+  max-width: 480px !important;
+  margin: 0 auto;
+}
+.auth-card {
+  width: 100%;
+  padding: 24px !important;
+  border-radius: 24px !important;
+}
+.auth-page-signup {
+  min-height: 100vh;
+  padding: 104px 16px 24px;
+}
+.auth-signup-form {
+  gap: 12px !important;
+}
+.auth-signup-form .auth-field input {
+  height: 48px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.auth-card-heading {
+  margin-bottom: 16px !important;
+}
+.auth-divider {
+  margin-top: 16px !important;
+  margin-bottom: 16px !important;
+}
+@media (max-width: 520px) {
+  .auth-card { padding: 20px !important; }
+  .auth-page-signup { padding-right: 12px; padding-left: 12px; }
+}
+
+
+/* Auth pages use the same sticky navigation spacing as the landing page. */
+.auth-page-signup {
+  min-height: calc(100vh - 72px);
+  padding: 24px 16px !important;
+}
+
+/* Keep the login and signup navbar at the landing page's exact scale. */
+header.sticky.top-0.z-50 > .max-w-7xl {
+  padding-top: 0.55rem;
+  padding-bottom: 0.55rem;
+}
+header.sticky.top-0.z-50 .w-10.h-10 {
+  width: 2.25rem;
+  height: 2.25rem;
+}
+header.sticky.top-0.z-50 .text-xl {
+  font-size: 1.1rem;
+}
+header.sticky.top-0.z-50 nav a {
+  padding: 0.4rem 0.65rem;
+  font-size: 0.75rem;
+}
+header.sticky.top-0.z-50 a.btn-tactile-green {
+  padding: 0.45rem 0.8rem;
+  font-size: 0.72rem;
+}
+
+
+/* Use the landing hero's pill-shaped corners for every shared tactile button. */
+.primary-button,
+.tactile-button-green,
+.btn-tactile-green,
+.tactile-button-white,
+.btn-tactile-white,
+.tactile-button-orange,
+.btn-tactile-orange {
+  border-radius: 9999px !important;
+}
+
