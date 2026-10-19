@@ -78,6 +78,7 @@ function renderCalendar() {
 
   const firstDay = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth(), 1).getDay();
   const daysInMonth = new Date(displayedMonth.getFullYear(), displayedMonth.getMonth() + 1, 0).getDate();
+  const todayKey = dateKey(new Date());
 
   for (let blank = 0; blank < firstDay; blank += 1) {
     const cell = document.createElement("span");
@@ -98,6 +99,7 @@ function renderCalendar() {
     button.setAttribute("aria-label", `${new Intl.DateTimeFormat("en", { dateStyle: "full" }).format(date)}${dayEntries.length ? `, ${dayEntries.length} ${dayEntries.length === 1 ? "entry" : "entries"}` : ", no entries"}`);
     button.setAttribute("aria-pressed", String(key === selectedCalendarDate));
     button.dataset.date = key;
+    if (key === todayKey) button.classList.add("is-today");
     if (dayEntries.length) button.classList.add("has-entries");
     if (key === selectedCalendarDate) button.classList.add("is-selected");
 

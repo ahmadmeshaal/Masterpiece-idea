@@ -278,6 +278,15 @@ function compressTrackerPicture(file) {
   });
 }
 
+function readFileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error("Could not read this file."));
+    reader.onload = () => resolve(String(reader.result));
+    reader.readAsDataURL(file);
+  });
+}
+
 trackerPicture.addEventListener("change", async () => {
   const file = trackerPicture.files[0];
   uploadError.hidden = true;
@@ -490,13 +499,35 @@ document.querySelectorAll("[data-attachment]").forEach((button) => {
   });
 });
 
-entryPhotoInput.addEventListener("change", () => {
-  Array.from(entryPhotoInput.files).forEach((file) => entryAttachments.push({ type: "image", name: file.name }));
+entryPhotoInput.addEventListener("change", async () => {
+  for (const file of Array.from(entryPhotoInput.files)) {
+    if (file.size > 10 * 1024 * 1024) {
+      window.alert(`${file.name} is too large. Choose a photo under 10MB.`);
+      continue;
+    }
+    try {
+      const dataUrl = await compressTrackerPicture(file);
+      entryAttachments.push({ type: "image", name: file.name, dataUrl });
+    } catch (error) {
+      window.alert(error.message);
+    }
+  }
   entryPhotoInput.value = "";
   renderEntryAttachments();
 });
-entryVideoInput.addEventListener("change", () => {
-  Array.from(entryVideoInput.files).forEach((file) => entryAttachments.push({ type: "video", name: file.name }));
+entryVideoInput.addEventListener("change", async () => {
+  for (const file of Array.from(entryVideoInput.files)) {
+    if (file.size > 1024 * 1024) {
+      window.alert(`${file.name} is too large. Choose a video under 1MB so it can be saved with the tracker.`);
+      continue;
+    }
+    try {
+      const dataUrl = await readFileAsDataUrl(file);
+      entryAttachments.push({ type: "video", name: file.name, dataUrl });
+    } catch (error) {
+      window.alert(error.message);
+    }
+  }
   entryVideoInput.value = "";
   renderEntryAttachments();
 });
@@ -525,15 +556,22 @@ entryForm.addEventListener("submit", (event) => {
   closeEntryDialog();
 });
 
-window.addEventListener("taqaddomi:open-entry", () => {
-  if (trackers.length) openEntryDialog(trackers[0].id);
+window.addEventListener("taqaddomi:open-entry", (event) => {
+  if (trackers.length) openEntryDialog(event.detail?.trackerId || trackers[0].id);
   else openDialog();
 });
+
+window.addEventListener("taqaddomi:open-create-tracker", openDialog);
 
 renderTrackers();
 saveTrackers();
 
-if (new URLSearchParams(window.location.search).has("open-entry")) {
-  window.setTimeout(() => window.dispatchEvent(new CustomEvent("taqaddomi:open-entry")), 0);
+const pageParams = new URLSearchParams(window.location.search);
+if (pageParams.has("open-entry")) {
+  const trackerId = pageParams.get("tracker-id");
+  window.setTimeout(() => window.dispatchEvent(new CustomEvent("taqaddomi:open-entry", { detail: { trackerId } })), 0);
+  window.history.replaceState({}, "", window.location.pathname);
+} else if (pageParams.has("open-create")) {
+  window.setTimeout(() => window.dispatchEvent(new CustomEvent("taqaddomi:open-create-tracker")), 0);
   window.history.replaceState({}, "", window.location.pathname);
 }

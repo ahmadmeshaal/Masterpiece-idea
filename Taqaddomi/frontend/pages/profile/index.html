@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Profile | Taqaddomi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/theme.css">
+  <link rel="stylesheet" href="../../styles/components.css">
+  <link rel="stylesheet" href="../../styles/buttons.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app-sidebar" data-active-page="profile"></div>
+  <div class="main-area">
+    <div id="app-header"></div>
+    <main class="profile-page">
+      <div class="profile-content">
+        <div class="profile-page-heading"><div><span class="profile-eyebrow">YOUR SPACE</span><h1>My Profile</h1><p>Your progress, your people, your journey.</p></div></div>
+
+        <section class="profile-hero">
+          <div class="profile-cover" id="profile-cover">
+            <button class="cover-change-button" id="change-cover-button" type="button"><span class="icon">photo_camera</span>Change cover</button>
+            <input id="cover-image-input" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+          </div>
+          <div class="profile-hero-body">
+            <div class="profile-avatar-wrap">
+              <div class="profile-avatar-large" id="profile-avatar">🌱</div>
+              <button class="avatar-change-button" id="change-avatar-button" type="button" aria-label="Change profile picture"><span class="icon">photo_camera</span></button>
+              <input id="avatar-image-input" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+            </div>
+            <div class="profile-identity"><span class="member-label"><span class="icon">verified</span> HABIT BUILDER</span><h2 id="profile-name">Kareem Zaid</h2><span class="profile-handle" id="profile-handle">@kareemz</span><p id="profile-bio">Building better habits, one day at a time.</p></div>
+            <button class="btn-tactile-white edit-profile-button" id="open-profile-editor" type="button"><span class="icon">edit</span>Edit Profile</button>
+          </div>
+        </section>
+
+        <section class="profile-stats" aria-label="Your progress statistics">
+          <article class="profile-stat"><span class="stat-icon icon">track_changes</span><div><strong id="profile-tracker-count">0</strong><small>Trackers</small></div></article>
+          <article class="profile-stat"><span class="stat-icon icon">edit_note</span><div><strong id="profile-entry-count">0</strong><small>Entries</small></div></article>
+          <article class="profile-stat"><span class="stat-icon icon">public</span><div><strong id="profile-post-count">0</strong><small>Community posts</small></div></article>
+          <button class="profile-stat social-stat" type="button" data-profile-tab="following"><span class="stat-icon icon">person_add</span><div><strong id="following-count">0</strong><small>Following</small></div></button>
+          <button class="profile-stat social-stat" type="button" data-profile-tab="followers"><span class="stat-icon icon">groups</span><div><strong id="followers-count">0</strong><small>Followers</small></div></button>
+        </section>
+
+        <div class="profile-columns">
+          <section class="profile-panel social-panel">
+            <div class="profile-panel-heading"><div><span class="profile-eyebrow">YOUR COMMUNITY</span><h2>Following &amp; Followers</h2></div></div>
+            <div class="social-tabs" role="tablist" aria-label="Following and followers">
+              <button class="social-tab is-active" type="button" role="tab" data-profile-tab="following" aria-selected="true">Following <span id="following-tab-count">0</span></button>
+              <button class="social-tab" type="button" role="tab" data-profile-tab="followers" aria-selected="false">Followers <span id="followers-tab-count">0</span></button>
+            </div>
+            <div class="people-list" id="people-list"></div>
+          </section>
+
+          <section class="profile-panel progress-panel">
+            <div class="profile-panel-heading"><div><span class="profile-eyebrow">KEEP SHOWING UP</span><h2>Your progress</h2></div><a href="../my-trackers/index.html">View trackers <span class="icon">arrow_forward</span></a></div>
+            <div class="progress-summary"><span class="progress-summary-icon icon">emoji_events</span><div><strong id="active-tracker-count">0 active trackers</strong><p id="progress-summary-text">Start a tracker to see your progress grow here.</p></div></div>
+            <div class="profile-recent-trackers" id="profile-recent-trackers"></div>
+          </section>
+        </div>
+
+        <section class="profile-panel activity-panel">
+          <div class="profile-panel-heading"><div><span class="profile-eyebrow">LITTLE STEPS ADD UP</span><h2>Recent activity</h2></div><span class="activity-note">Your latest tracker entries</span></div>
+          <div class="profile-activity-list" id="profile-activity-list"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <dialog class="profile-editor-dialog" id="profile-editor" aria-labelledby="profile-editor-title">
+    <form id="profile-form">
+      <div class="editor-heading"><div><span class="profile-eyebrow">MAKE IT YOURS</span><h2 id="profile-editor-title">Edit Profile</h2></div><button class="editor-close" id="close-profile-editor" type="button" aria-label="Close">×</button></div>
+      <label>Display name<input name="name" type="text" maxlength="50" required></label>
+      <label>Username<input name="username" type="text" maxlength="24" pattern="[A-Za-z0-9_]+" required><small>Letters, numbers, and underscores only.</small></label>
+      <label>About you<textarea name="bio" rows="3" maxlength="180" placeholder="What are you working towards?"></textarea></label>
+      <label>Avatar emoji<input name="avatar" type="text" maxlength="4" placeholder="🌱"></label>
+      <div class="editor-actions"><button class="btn-tactile-white" id="cancel-profile-editor" type="button">Cancel</button><button class="btn-tactile-green" type="submit">Save Profile <span class="icon">check</span></button></div>
+    </form>
+  </dialog>
+
+  <script src="../../data/seed-demo-data.js"></script>
+  <script src="../../components/app-shell.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

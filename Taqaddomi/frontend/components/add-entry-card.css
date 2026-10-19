@@ -383,6 +383,7 @@
 .entry-dialog form { margin: 0; }
 .entry-dialog .entry-card { width: 100%; margin: 0 auto; }
 .entry-attachment-list { display: flex; flex-wrap: wrap; gap: 7px; }
+.attachment-storage-note { margin: 6px 0 0; color: var(--color-muted); font-size: 10px; }
 .entry-dialog .attachment-chip { max-width: 100%; }
 .entry-dialog .attachment-chip > span:nth-child(2) { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .entry-dialog .attachment-chip button { flex: 0 0 auto; cursor: pointer; }

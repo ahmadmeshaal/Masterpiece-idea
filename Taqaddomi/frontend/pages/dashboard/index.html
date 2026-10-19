@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | Taqaddomi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/theme.css">
+  <link rel="stylesheet" href="../../styles/components.css">
+  <link rel="stylesheet" href="../../styles/buttons.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app-sidebar" data-active-page="dashboard"></div>
+  <div class="main-area">
+    <div id="app-header"></div>
+    <main class="dashboard-page">
+      <div class="dashboard-content">
+        <section class="dashboard-welcome">
+          <div><span class="dashboard-date" id="today-date"></span><h1><span id="greeting">Good morning</span>, <span id="greeting-name">Kareem</span> <span class="wave">✦</span></h1><p>A fresh day is a fresh chance to show up for yourself.</p></div>
+          <a class="btn-tactile-green welcome-add-button" href="../my-trackers/index.html?open-entry=1"><span class="icon">add</span>Log today’s progress</a>
+        </section>
+
+        <section class="week-panel" aria-labelledby="week-title">
+          <div class="week-heading"><div><span class="dashboard-eyebrow">YOUR WEEK, ONE DAY AT A TIME</span><h2 id="week-title">Weekly rhythm</h2></div><span class="week-summary" id="week-summary">0 days logged</span></div>
+          <div class="week-strip" id="week-strip"></div>
+        </section>
+
+        <div class="dashboard-workspace">
+          <section class="today-panel" aria-labelledby="today-title">
+            <div class="today-panel-heading"><div><span class="dashboard-eyebrow">MAKE TODAY COUNT</span><h2 id="today-title">Your focus for today</h2></div><span class="today-progress-badge" id="today-progress-badge">0 / 0</span></div>
+            <div class="today-progress-track"><span id="today-progress-bar"></span></div>
+            <div class="today-tracker-list" id="today-tracker-list"></div>
+          </section>
+
+          <aside class="dashboard-aside">
+            <section class="daily-note">
+              <span class="daily-note-icon icon">wb_sunny</span><span class="dashboard-eyebrow">A THOUGHT FOR TODAY</span>
+              <blockquote>“Small steps every day add up to big change.”</blockquote>
+              <p>You don’t need a perfect day. Just one small step.</p>
+            </section>
+            <a class="community-nudge" href="../community-feed/index.html"><span class="community-nudge-icon icon">diversity_3</span><span><strong>A little support goes a long way</strong><small>See what the community is up to</small></span><span class="icon nudge-arrow">arrow_forward</span></a>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../../data/seed-demo-data.js"></script>
+  <script src="../../components/app-shell.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

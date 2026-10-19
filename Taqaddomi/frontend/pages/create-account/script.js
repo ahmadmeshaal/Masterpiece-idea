@@ -18,6 +18,25 @@
     window.handleSignupSubmit = function() {
       const submitBtn = document.getElementById('submit-cta');
       const successBanner = document.getElementById('signup-success-banner');
+      const form = document.getElementById('signup-form');
+      const error = document.getElementById('signup-error');
+      const values = new FormData(form);
+      const password = String(values.get('password') || '');
+      const confirmPassword = String(values.get('confirm_password') || '');
+
+      if (!form.reportValidity()) return;
+      if (password !== confirmPassword) {
+        error.textContent = 'The passwords do not match. Please check and try again.';
+        error.hidden = false;
+        return;
+      }
+
+      error.hidden = true;
+      const name = String(values.get('name') || '').trim();
+      const email = String(values.get('email') || '').trim().toLowerCase();
+      const username = (email.split('@')[0] || 'member').replace(/[^a-z0-9_]/g, '') || 'member';
+      localStorage.setItem('taqaddomi-profile', JSON.stringify({ name, username, bio: 'Building better habits, one day at a time.', avatar: '🌱' }));
+      localStorage.setItem('taqaddomi-auth-session', JSON.stringify({ email, loggedIn: true }));
 
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -38,6 +57,7 @@
             <span>Welcome aboard!</span>
           `;
         }
+        window.location.href = '../dashboard/index.html';
       }, 1000);
     };
   

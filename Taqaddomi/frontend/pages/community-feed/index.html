@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Community | Taqaddomi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/theme.css">
+  <link rel="stylesheet" href="../../styles/components.css">
+  <link rel="stylesheet" href="../../styles/buttons.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="app-sidebar" data-active-page="community-feed"></div>
+  <div class="main-area">
+    <div id="app-header"></div>
+    <main class="community-page">
+      <div class="community-content">
+        <section class="community-welcome">
+          <div>
+            <span class="community-eyebrow"><span class="icon">diversity_3</span> TAQADDOMI COMMUNITY</span>
+            <h1>Grow better, <span>together.</span></h1>
+            <p>Find inspiration in small wins, share your progress, and keep each other moving forward.</p>
+          </div>
+          <div class="welcome-illustration" aria-hidden="true"><span class="icon">psychiatry</span><i>✦</i><b>✧</b></div>
+        </section>
+
+        <div class="community-layout">
+          <section class="feed-column" aria-label="Community activity">
+            <div class="feed-heading">
+              <div><span class="section-eyebrow">YOUR DAILY DOSE OF MOTIVATION</span><h2>Community feed</h2></div>
+              <label class="feed-search"><span class="icon">search</span><input id="post-search" type="search" placeholder="Search the feed" aria-label="Search the community feed"></label>
+            </div>
+
+            <div class="feed-filters" id="feed-filters" role="group" aria-label="Community feed">
+              <button class="feed-filter is-active" type="button" data-feed="explore" aria-pressed="true">Explore</button>
+              <button class="feed-filter" type="button" data-feed="following" aria-pressed="false">Following</button>
+            </div>
+
+            <div class="community-post-list" id="community-post-list"></div>
+            <section class="feed-empty" id="feed-empty" hidden>
+              <span class="empty-feed-icon icon">forum</span>
+              <h2 id="empty-feed-title">The community is warming up</h2>
+              <p id="empty-feed-message">Public tracker entries will show up here. Share an entry with the community to start the conversation.</p>
+              <a class="btn-tactile-green" id="empty-feed-action" href="../my-trackers/index.html">Go to My Trackers <span class="icon">arrow_forward</span></a>
+            </section>
+          </section>
+
+          <aside class="community-sidebar" aria-label="Community information">
+            <section class="community-side-card community-prompt">
+              <span class="prompt-icon icon">lightbulb</span>
+              <span class="section-eyebrow">A LITTLE REMINDER</span>
+              <h2>Progress is better when it’s shared.</h2>
+              <p>Every small step can inspire someone else to take theirs.</p>
+            </section>
+            <section class="community-side-card community-guide">
+              <div class="side-card-heading"><span class="icon">volunteer_activism</span><h2>Community guidelines</h2></div>
+              <ul>
+                <li><span class="icon">check_circle</span>Celebrate progress at every size.</li>
+                <li><span class="icon">check_circle</span>Be kind and encourage others.</li>
+                <li><span class="icon">check_circle</span>Share what helps you grow.</li>
+              </ul>
+            </section>
+            <section class="community-side-card community-tip">
+              <span class="icon">tips_and_updates</span>
+              <div><strong>Share your progress</strong><p>When adding an entry, turn on “Publish to community feed”.</p></div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="../../data/seed-demo-data.js"></script>
+  <script src="../../components/app-shell.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

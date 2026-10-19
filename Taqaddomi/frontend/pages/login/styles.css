@@ -17,3 +17,14 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.demo-login-note {
+  margin: 0;
+  padding: 9px 11px;
+  border: 1px solid #d7ebc4;
+  border-radius: 12px;
+  background: #f5faef;
+  color: #49633a;
+  font-size: 11px;
+  line-height: 1.5;
+}

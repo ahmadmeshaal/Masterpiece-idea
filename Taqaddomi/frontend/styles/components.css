@@ -155,10 +155,17 @@
   border-radius: 16px;
   background: #fff;
   transition: background-color 0.15s ease;
+  color: inherit;
+  text-decoration: none;
 }
 
 .profile:hover {
   background: #faf8f0;
+}
+
+.profile.is-current {
+  border-color: #d2edaa;
+  background: #f2f9e8;
 }
 
 .profile-copy {
@@ -188,6 +195,11 @@
   background: var(--color-green);
   color: #fff;
   font-weight: 800;
+}
+
+a.small-avatar {
+  color: #fff;
+  text-decoration: none;
 }
 
 .avatar {
