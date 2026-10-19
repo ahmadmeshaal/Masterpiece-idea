@@ -17,13 +17,6 @@ Taqaddomi is a habit and progress tracking app concept. Create trackers for rout
 
 No package installation is required. Start a local web server from the front-end folder:
 
-```bash
-cd Taqaddomi/frontend
-python -m http.server 5500
-```
-
-Then open [http://localhost:5500/pages/landing-page/](http://localhost:5500/pages/landing-page/) in your browser.
-
 You can also open `Taqaddomi/frontend/pages/landing-page/index.html` directly, though a local server gives more consistent browser behavior.
 
 ## Project structure
