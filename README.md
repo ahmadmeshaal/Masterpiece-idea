@@ -2,6 +2,8 @@
 
 Taqaddomi is a habit and progress tracking app concept. Create trackers for routines and goals, record daily entries, and see your activity over time. The project currently contains a static front-end prototype built with HTML, CSS, and vanilla JavaScript.
 
+LIVE URL:https://ahmadmeshaal.github.io/Masterpiece-idea/Taqaddomi/frontend/pages/landing-page/index.html
+
 ## Features
 
 - Landing page, login screen, and account creation screen
