@@ -85,6 +85,12 @@ function makePersonRow(person, isFollowing = false) {
   row.append(avatar, copy);
 
   if (person.id && suggestedPeople.some((suggestion) => suggestion.id === person.id)) {
+    const messageLink = document.createElement("a");
+    messageLink.className = "person-message-button";
+    messageLink.href = `../messages/index.html?to=${encodeURIComponent(person.id)}`;
+    messageLink.textContent = "Message";
+    row.append(messageLink);
+
     const button = document.createElement("button");
     button.className = `person-follow-button${isFollowing ? " is-following" : ""}`;
     button.type = "button";

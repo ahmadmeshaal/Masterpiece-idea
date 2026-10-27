@@ -60,6 +60,7 @@ function getPosts() {
 function makePost(post) {
   const article = document.createElement("article");
   article.className = "community-post";
+  article.id = post.postId;
   const header = document.createElement("div");
   header.className = "post-header";
   const avatar = document.createElement("span");
@@ -282,3 +283,7 @@ postList.addEventListener("submit", (event) => {
 });
 
 renderFeed();
+if (window.location.hash) {
+  const postId = decodeURIComponent(window.location.hash.slice(1));
+  requestAnimationFrame(() => document.getElementById(postId)?.scrollIntoView({ block: "center" }));
+}

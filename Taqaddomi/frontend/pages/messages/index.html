@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Messages | Taqaddomi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles/theme.css">
+  <link rel="stylesheet" href="../../styles/components.css">
+  <link rel="stylesheet" href="../../styles/buttons.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../../styles/dark-mode.css">
+  <script src="../../components/appearance.js"></script>
+</head>
+<body class="messages-page-body">
+  <div id="app-sidebar" data-active-page="messages"></div>
+  <div class="main-area messages-main-area">
+    <div id="app-header"></div>
+    <main class="messages-page" aria-label="Messages">
+      <nav class="conversation-pane" aria-label="Conversation list">
+        <div class="conversation-heading">
+          <div><p class="messages-eyebrow" data-i18n="inboxLabel">YOUR COMMUNITY</p><h1 data-i18n="messagesTitle">Messages</h1></div>
+          <button class="messages-icon-button" id="new-message-button" type="button" data-i18n-aria="newMessage" aria-label="New message" title="New message"><span class="icon">edit_square</span></button>
+        </div>
+        <label class="conversation-search"><span class="icon">search</span><input id="conversation-search" type="search" data-i18n-placeholder="searchMessages" placeholder="Search people" autocomplete="off"><span class="sr-only" data-i18n="searchMessages">Search people</span></label>
+        <div class="conversation-content" id="conversation-content">
+          <div class="conversation-skeleton" id="conversation-skeleton" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="conversation-list" id="conversation-list" role="list"></div>
+          <div class="list-empty" id="list-empty" hidden></div>
+        </div>
+      </nav>
+
+      <section class="chat-pane" aria-label="Chat">
+        <div class="chat-placeholder" id="chat-placeholder"><span class="placeholder-icon icon">forum</span><h2 data-i18n="selectConversation">Select a conversation</h2><p data-i18n="selectConversationHint">Choose a conversation or start a new one.</p><button class="btn-tactile-green" id="placeholder-new-message" type="button" data-i18n="startConversation">Start a conversation</button></div>
+        <div class="chat-error" id="chat-error" hidden><span class="icon">cloud_off</span><h2 data-i18n="loadError">Couldn't load messages</h2><button class="btn-tactile-white" id="retry-load" type="button" data-i18n="tryAgain">Try again</button></div>
+        <div class="chat-view" id="chat-view" hidden>
+          <header class="chat-header">
+            <button class="messages-icon-button chat-back-button" id="back-to-list" type="button" data-i18n-aria="backToConversations" aria-label="Back to conversations"><span class="icon">arrow_back</span></button>
+            <a class="chat-user-avatar" id="chat-avatar-link" href="../profile/index.html" aria-label="Open profile"><span id="chat-avatar"></span></a>
+            <div class="chat-user-copy"><a class="chat-user-name" id="chat-name-link" href="../profile/index.html"></a><a class="chat-user-handle" id="chat-handle-link" href="../profile/index.html"></a></div>
+            <details class="chat-more-menu"><summary class="messages-icon-button" aria-label="More conversation actions" title="More"><span class="icon">more_vert</span></summary><div class="more-menu-items"><button type="button" data-more-action="mute"></button><button type="button" data-more-action="block"></button><button type="button" data-more-action="report"></button><button type="button" data-more-action="delete"></button></div></details>
+          </header>
+          <div class="message-log" id="message-log" role="log" aria-live="polite" aria-relevant="additions text" aria-label="Messages in this conversation" tabindex="0">
+            <div class="older-loading" id="older-loading" hidden data-i18n="loadingOlder">Loading earlier messages…</div>
+            <div class="message-skeleton" id="message-skeleton" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div class="message-items" id="message-items"></div>
+          </div>
+          <div class="chat-restriction" id="chat-restriction" hidden></div>
+          <form class="message-composer" id="message-form">
+            <div class="attachment-preview" id="attachment-preview" hidden><img id="attachment-preview-image" alt=""><button class="remove-attachment" id="remove-attachment" type="button" aria-label="Remove attached photo"><span class="icon">close</span></button></div>
+            <div class="composer-row">
+              <input id="photo-input" type="file" accept="image/*" hidden>
+              <button class="messages-icon-button attach-button" id="attach-photo" type="button" aria-label="Attach photo" title="Attach photo"><span class="icon">add_photo_alternate</span></button>
+              <div class="composer-input-wrap"><textarea id="message-input" rows="1" maxlength="2000" data-i18n-placeholder="writeMessage" placeholder="Write a message…"></textarea><span class="character-count" id="character-count" hidden>0 / 2000</span></div>
+              <button class="btn-tactile-green send-button" id="send-message" type="submit" aria-label="Send message"><span class="icon">send</span><span data-i18n="send">Send</span></button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <dialog class="messages-dialog" id="new-message-dialog" aria-labelledby="new-message-title">
+    <div class="dialog-content"><div class="dialog-heading"><div><p class="messages-eyebrow" data-i18n="startSomething">START SOMETHING</p><h2 id="new-message-title" data-i18n="newMessage">New message</h2></div><button class="messages-icon-button" type="button" data-close-dialog="new-message-dialog" aria-label="Close"><span class="icon">close</span></button></div><label class="conversation-search dialog-search"><span class="icon">search</span><input id="user-search" type="search" autocomplete="off" placeholder="Search people" data-i18n-placeholder="searchPeople"><span class="sr-only" data-i18n="searchPeople">Search people</span></label><div class="user-search-results" id="user-search-results" role="listbox" aria-label="People"></div></div>
+  </dialog>
+
+  <dialog class="messages-dialog confirmation-dialog" id="action-dialog" aria-labelledby="action-title" aria-describedby="action-description"><div class="dialog-content"><div class="dialog-heading"><h2 id="action-title"></h2><button class="messages-icon-button" type="button" data-close-dialog="action-dialog" aria-label="Close"><span class="icon">close</span></button></div><p id="action-description"></p><div class="dialog-actions"><button class="btn-tactile-white" type="button" data-close-dialog="action-dialog" data-i18n="cancel">Cancel</button><button class="btn-tactile-green" id="confirm-action" type="button" data-i18n="confirm">Confirm</button></div></div></dialog>
+
+  <dialog class="messages-dialog image-dialog" id="image-dialog" aria-label="Shared photo"><button class="messages-icon-button image-dialog-close" type="button" data-close-dialog="image-dialog" aria-label="Close image"><span class="icon">close</span></button><img id="large-image" alt=""></dialog>
+  <div class="messages-toast" id="messages-toast" role="status" aria-live="polite"></div>
+  <div class="sr-only" id="incoming-announcement" aria-live="assertive"></div>
+
+  <script src="../../data/seed-demo-data.js"></script>
+  <script src="service.js"></script>
+  <script src="../../components/app-shell.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

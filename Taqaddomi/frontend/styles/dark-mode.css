@@ -1,0 +1,74 @@
+/* Shared palette fallback also supports public pages that only load Tailwind. */
+:root {
+  --color-page: #fbf9f1;
+  --color-card: #ffffff;
+  --color-soft: #faf8f0;
+  --color-soft-hover: #f2ede0;
+  --color-border: #e7e2d2;
+  --color-text: #1b1c17;
+  --color-muted: #5f6d56;
+  --color-green-text: #2b6c00;
+}
+
+html.dark {
+  color-scheme: dark;
+  --color-page: #151812;
+  --color-card: #20251d;
+  --color-soft: #272d23;
+  --color-soft-hover: #333b2c;
+  --color-border: #3c4535;
+  --color-text: #f1f4eb;
+  --color-muted: #b0baa5;
+  --color-green-text: #a5e875;
+}
+
+html.dark body { color: var(--color-text) !important; background: var(--color-page) !important; }
+html.dark :is(.sidebar, .topbar, .profile, .search, .top-button, .tracker-card, .stat-card,
+  .profile-hero, .profile-stat, .profile-panel, .profile-editor-dialog, .community-post,
+  .community-side-card, .feed-search, .feed-filter, .week-panel, .today-panel, .daily-note,
+  .detail-stat, .details-panel, .details-edit-dialog, .tracker-dialog, .entry-dialog,
+  .confirm-dialog-card, .auth-card, dialog) {
+  color: var(--color-text);
+  background-color: var(--color-card);
+  border-color: var(--color-border);
+}
+
+html.dark :is(input, textarea, select) { color: var(--color-text) !important; background-color: var(--color-soft) !important; border-color: var(--color-border) !important; }
+html.dark :is(input, textarea, select)::placeholder { color: var(--color-muted) !important; }
+html.dark .navigation a { color: var(--color-muted); }
+html.dark .navigation a:hover, html.dark .top-button:hover { color: var(--color-text); background: var(--color-soft-hover); }
+html.dark .navigation a.selected, html.dark .profile.is-current, html.dark .bottom-nav a.selected { border-color: #456b2e; background: #2c4220; color: #c4f19f; }
+html.dark .topbar, html.dark .bottom-nav { background: #1b201bf2; border-color: var(--color-border); }
+html.dark .bottom-nav a { color: var(--color-muted); }
+html.dark .person-follow-button, html.dark .social-tab span { background: var(--color-soft); color: var(--color-text); border-color: var(--color-border); }
+html.dark .person-message-button { background: #2a3b21; border-color: #456b2e; color: #c4f19f; }
+
+/* Tailwind-based landing and account screens. */
+html.dark [class~="bg-white"], html.dark [class*="bg-[#FAF8F5]"], html.dark [class*="bg-[#FCF9F2]"],
+html.dark [class*="bg-[#F6F3EC]"], html.dark [class*="bg-[#f8f5ed]"], html.dark [class*="bg-[#f6f2e8]"],
+html.dark [class*="bg-[#f4eee1]"], html.dark [class*="bg-[#ede6d5]"], html.dark [class*="bg-[#ede7d8]"],
+html.dark [class*="bg-[#fbfaf6]"], html.dark [class*="bg-surface-card"], html.dark [class*="bg-surface-canvas"],
+html.dark [class*="bg-surface-container-lowest"] { color: var(--color-text) !important; background-color: var(--color-card) !important; }
+html.dark [class*="text-on-surface"], html.dark [class*="text-stone-800"], html.dark [class*="text-stone-700"],
+html.dark [class*="text-stone-500"], html.dark [class*="text-stone-400"], html.dark [class*="text-gray-800"],
+html.dark [class*="text-gray-500"], html.dark [class*="text-[#22221b]"], html.dark [class*="text-[#2b2b24]"],
+html.dark [class*="text-[#444238]"], html.dark [class*="text-[#525046]"], html.dark [class*="text-[#615e51]"],
+html.dark [class*="text-[#686354]"], html.dark [class*="text-[#686558]"], html.dark [class*="text-[#757264]"],
+html.dark [class*="text-[#787364]"], html.dark [class*="text-[#8a8676]"], html.dark [class*="text-[#b3ac9b]"] { color: var(--color-text) !important; }
+html.dark [class*="border-[#ECE6D9]"], html.dark [class*="border-[#ece6d9]"], html.dark [class*="border-[#e7e2d2]"] { border-color: var(--color-border) !important; }
+html.dark .public-navbar, html.dark [class*="bg-[#FAF8F5]/"] { color: var(--color-text) !important; background-color: #1b201bf0 !important; }
+html.dark .public-navbar a { color: inherit; }
+
+.theme-toggle-public { width: 38px; height: 38px; display: grid; place-items: center; border: 2px solid var(--color-border); border-bottom-width: 4px; border-radius: 14px; background: var(--color-card); color: var(--color-text); cursor: pointer; }
+html.dark .theme-toggle-public { background: var(--color-card); color: var(--color-text); }
+html.dark .details-hero { background: linear-gradient(135deg, #28391e, #20251d); }
+html.dark .community-welcome { background: linear-gradient(115deg, #26371d, #20251d 72%); }
+html.dark .community-prompt, html.dark .daily-note { background: #332e1d; border-color: #574b2b; }
+html.dark .messages-page .conversation-row.is-selected { background: #2a3b21; border-color: #456b2e; }
+html.dark .messages-page .message-row.is-outgoing .message-bubble { background: #2c4220; border-color: #456b2e; }
+html.dark .messages-page .shared-card { background: var(--color-card); }
+html.dark dialog::backdrop { background: #0009; }
+
+@media (max-width: 680px) {
+  .messages-page-body.messages-chat-open .bottom-nav { display: none; }
+}
